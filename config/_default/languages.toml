@@ -1,8 +1,8 @@
 [en]
-  languageName = "English"
-  contentDir = "content/en"
-  weight = 10
-  [en.params]
-    languageISO = "EN"
-    languageTag = "en-US"
+languageName = "English"
+contentDir = "content/en"
+weight = 10
+[en.params]
+languageISO = "EN"
+languageTag = "en-US"
 
