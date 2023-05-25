@@ -4,7 +4,6 @@
     "no-empty-source": null,
     "string-quotes": "double",
     "scss/comment-no-empty": null,
-    "max-line-length": null,
     "scss/at-extend-no-missing-placeholder": null,
     "scss/dollar-variable-colon-space-after": null,
     "scss/dollar-variable-empty-line-before": null,
@@ -41,6 +40,14 @@
           "responsive",
           "variants",
           "screen"
+        ]
+      }
+    ],
+    "max-line-length": [
+      80,
+      {
+        "ignore": [
+          "comments"
         ]
       }
     ]

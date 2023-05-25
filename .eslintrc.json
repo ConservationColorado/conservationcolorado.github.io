@@ -16,7 +16,10 @@
   },
   "rules": {
     "no-console": 0,
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "comma-dangle": [
       "error",
       {
@@ -25,6 +28,12 @@
         "imports": "always-multiline",
         "exports": "always-multiline",
         "functions": "ignore"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
       }
     ]
   }
