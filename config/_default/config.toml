@@ -1,4 +1,4 @@
-baseurl = "https://conservationco.github.io/"
+baseurl = "https://conservationcolorado.github.io/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true

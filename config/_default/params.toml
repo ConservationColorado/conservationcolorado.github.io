@@ -72,7 +72,7 @@ alertText = "🚧 Please excuse the mess... This website is under construction!"
 
 # Edit Page
 repoHost = "GitHub"
-docsRepo = "https://github.com/ConservationColorado/its-technically-useful"
+docsRepo = "https://github.com/ConservationColorado/conservationcolorado.github.io"
 docsRepoBranch = "main"
 docsRepoSubPath = ""
 editPage = false
