@@ -11,7 +11,7 @@ draft: false
 Welcome to **It's Technically Useful**, a technology blog brought to you by [Conservation
 Colorado](https://conservationco.org/), created by [Oliver](https://github.com/OliverAbdulrahim)!
 
-This blog is  [**inclusive**](#inclusive), [**free**](#free), and [**trustworthy**](#trustworthy). Continue below to 
+This blog is  [**inclusive**](#inclusive), [**free**](#free), and [**trustworthy**](#trustworthy). Continue below to
 learn more!
 
 #### Inclusive
@@ -42,8 +42,8 @@ technology, creating opportunities for **collaborating** while learning, and hav
 materials that can help you do more in your work.
 
 I achieve this by making this
-project [entirely open source](https://github.com/ConservationColorado/conservationcolorado.github.io), forever and always. This
-makes the information I present to you auditable, extendable, and transparent.
+project [entirely open source](https://github.com/ConservationColorado/conservationcolorado.github.io), forever and
+always. This makes the information I present to you auditable, extendable, and transparent.
 
 #### Trustworthy
 
@@ -63,5 +63,4 @@ You may also appreciate dark mode -- enable it in the navigation bar!
 I like to call this site and blog "technically useful" because it's useful, technically.
 
 As you can tell, this is a semi-serious name. Don't get me wrong, I think this is important work! At the same time, I
-want to dismantle the scariness, shame, and guilt associated with technology. Learn more about
-why [here](#inclusive).
+want to dismantle the scariness, shame, and guilt associated with technology. Learn more about why [here](#inclusive).
