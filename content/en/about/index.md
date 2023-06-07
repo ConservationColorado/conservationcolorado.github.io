@@ -28,18 +28,18 @@ you're welcome! Black and brown folks, women, and LGBTQ+ people experience these
 assumptions and stereotypes about our competence and technical ability.
 
 Although this blog talks about technology, I **center the human experience** in the way we interact with tech. That
-means that I call out shame and guilt. Not knowing how to do something no moral judgement. *Bilaks* (بالعكس -- Arabic
-word that basically means reverse that thought!), it's an exciting time of learning new things! And I will always write
-in a way that makes no assumptions about you.
+means that I call out shame and guilt. Not knowing how to do something carries no moral judgement. *Bilaks* (بالعكس --
+Arabic word that basically means "it's totally contrary"), it's an exciting time of learning new things! And I will
+always write in a way that makes no assumptions about you.
 
 #### Freedom
 
 This project is all about freedom.
 
 I'm not just talking about free as in free lunch. While that does sound delicious right about now, and this website is
-never going to cost you anything to access, I'm going beyond that. I'm talking about free as in *freedom*. I care about
-**empowering people** to use technology, creating opportunities for **collaborating** while learning, and having *
-*unrestricted access** to materials that can help you do more in your work.
+never going to cost you anything to access, I'm going beyond that. I care about **empowering people** to use
+technology, creating opportunities for **collaborating** while learning, and having **unrestricted access** to
+materials that can help you do more in your work.
 
 I achieve this by making this
 project [entirely open source](https://github.com/ConservationColorado/its-technically-useful), forever and always. This
