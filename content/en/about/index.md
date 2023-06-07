@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "This blog is all about inclusiveness, freedom, and trustworthiness!"
+description: "This blog inclusive, free, and trustworthy!"
 date: 2023-04-21T16:41:58-06:00
 lastmod: 2023-04-21T16:41:58-06:00
 draft: false
@@ -11,10 +11,10 @@ draft: false
 Welcome to **It's Technically Useful**, a technology blog brought to you by [Conservation
 Colorado](https://conservationco.org/), created by [Oliver](https://github.com/OliverAbdulrahim)!
 
-This blog is all about [**inclusiveness**](#inclusiveness), [**freedom**](#freedom), and
-[**trustworthiness**](#trustworthiness). Continue below to learn more!
+This blog is  [**inclusive**](#inclusive), [**free**](#free), and [**trustworthy**](#trustworthy). Continue below to 
+learn more!
 
-#### Inclusiveness
+#### Inclusive
 
 I talk about technology through an inclusive lens.
 
@@ -32,9 +32,9 @@ means that I call out shame and guilt. Not knowing how to do something carries n
 Arabic word that basically means "it's totally contrary"), it's an exciting time of learning new things! And I will
 always write in a way that makes no assumptions about you.
 
-#### Freedom
+#### Free
 
-This project is all about freedom.
+This project is all about free.
 
 I'm not just talking about free as in free lunch. While that does sound delicious right about now, and this website is
 never going to cost you anything to access, I'm going beyond that. I care about **empowering people** to use
@@ -45,7 +45,7 @@ I achieve this by making this
 project [entirely open source](https://github.com/ConservationColorado/its-technically-useful), forever and always. This
 makes the information I present to you auditable, extendable, and transparent.
 
-#### Trustworthiness
+#### Trustworthy
 
 You can rest assured that this site is a **safe place to stay** and **learn quality, well-researched** information.
 
@@ -64,4 +64,4 @@ I like to call this site and blog "technically useful" because it's useful, tech
 
 As you can tell, this is a semi-serious name. Don't get me wrong, I think this is important work! At the same time, I
 want to dismantle the scariness, shame, and guilt associated with technology. Learn more about
-why [here](#inclusiveness).
+why [here](#inclusive).
