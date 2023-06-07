@@ -9,4 +9,4 @@ images: [ ]
 You can reach us by emailing us at {{< email user="admin" domain="conservationco.org" >}}.
 
 If there's a problem with the site, you
-can [create an issue on GitHub at this link](https://github.com/ConservationColorado/its-technically-useful/issues).
+can [create an issue on GitHub at this link](https://github.com/ConservationColorado/conservationcolorado.github.io/issues).

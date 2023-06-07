@@ -42,7 +42,7 @@ technology, creating opportunities for **collaborating** while learning, and hav
 materials that can help you do more in your work.
 
 I achieve this by making this
-project [entirely open source](https://github.com/ConservationColorado/its-technically-useful), forever and always. This
+project [entirely open source](https://github.com/ConservationColorado/conservationcolorado.github.io), forever and always. This
 makes the information I present to you auditable, extendable, and transparent.
 
 #### Trustworthy
@@ -50,7 +50,7 @@ makes the information I present to you auditable, extendable, and transparent.
 You can rest assured that this site is a **safe place to stay** and **learn quality, well-researched** information.
 
 Everything is written by
-us -- [look for the green "Verified" tag here](https://github.com/ConservationColorado/its-technically-useful/commits/main).
+us -- [look for the green "Verified" tag here](https://github.com/ConservationColorado/conservationcolorado.github.io/commits/main).
 
 Also, I will never try to sell you anything! No advertisements or sponsored content. No spammy pop-ups, paywalls,
 referral links, auto-playing sound, chatbots, or any of the other horrors of the modern web.
