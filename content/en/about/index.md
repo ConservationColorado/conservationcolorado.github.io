@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "This blog is all about inclusiveness, freedom, and trustworthiness!"
+description: "This blog inclusive, free, and trustworthy!"
 date: 2023-04-21T16:41:58-06:00
 lastmod: 2023-04-21T16:41:58-06:00
 draft: false
@@ -11,10 +11,10 @@ draft: false
 Welcome to **It's Technically Useful**, a technology blog brought to you by [Conservation
 Colorado](https://conservationco.org/), created by [Oliver](https://github.com/OliverAbdulrahim)!
 
-This blog is all about [**inclusiveness**](#inclusiveness), [**freedom**](#freedom), and
-[**trustworthiness**](#trustworthiness). Continue below to learn more!
+This blog is  [**inclusive**](#inclusive), [**free**](#free), and [**trustworthy**](#trustworthy). Continue below to
+learn more!
 
-#### Inclusiveness
+#### Inclusive
 
 I talk about technology through an inclusive lens.
 
@@ -28,29 +28,29 @@ you're welcome! Black and brown folks, women, and LGBTQ+ people experience these
 assumptions and stereotypes about our competence and technical ability.
 
 Although this blog talks about technology, I **center the human experience** in the way we interact with tech. That
-means that I call out shame and guilt. Not knowing how to do something no moral judgement. *Bilaks* (بالعكس -- Arabic
-word that basically means reverse that thought!), it's an exciting time of learning new things! And I will always write
-in a way that makes no assumptions about you.
+means that I call out shame and guilt. Not knowing how to do something carries no moral judgement. *Bilaks* (بالعكس --
+Arabic word that basically means "it's totally contrary"), it's an exciting time of learning new things! And I will
+always write in a way that makes no assumptions about you.
 
-#### Freedom
+#### Free
 
-This project is all about freedom.
+This project is all about free.
 
 I'm not just talking about free as in free lunch. While that does sound delicious right about now, and this website is
-never going to cost you anything to access, I'm going beyond that. I'm talking about free as in *freedom*. I care about
-**empowering people** to use technology, creating opportunities for **collaborating** while learning, and having *
-*unrestricted access** to materials that can help you do more in your work.
+never going to cost you anything to access, I'm going beyond that. I care about **empowering people** to use
+technology, creating opportunities for **collaborating** while learning, and having **unrestricted access** to
+materials that can help you do more in your work.
 
 I achieve this by making this
-project [entirely open source](https://github.com/ConservationColorado/its-technically-useful), forever and always. This
-makes the information I present to you auditable, extendable, and transparent.
+project [entirely open source](https://github.com/ConservationColorado/conservationcolorado.github.io), forever and
+always. This makes the information I present to you auditable, extendable, and transparent.
 
-#### Trustworthiness
+#### Trustworthy
 
 You can rest assured that this site is a **safe place to stay** and **learn quality, well-researched** information.
 
 Everything is written by
-us -- [look for the green "Verified" tag here](https://github.com/ConservationColorado/its-technically-useful/commits/main).
+us -- [look for the green "Verified" tag here](https://github.com/ConservationColorado/conservationcolorado.github.io/commits/main).
 
 Also, I will never try to sell you anything! No advertisements or sponsored content. No spammy pop-ups, paywalls,
 referral links, auto-playing sound, chatbots, or any of the other horrors of the modern web.
@@ -63,5 +63,4 @@ You may also appreciate dark mode -- enable it in the navigation bar!
 I like to call this site and blog "technically useful" because it's useful, technically.
 
 As you can tell, this is a semi-serious name. Don't get me wrong, I think this is important work! At the same time, I
-want to dismantle the scariness, shame, and guilt associated with technology. Learn more about
-why [here](#inclusiveness).
+want to dismantle the scariness, shame, and guilt associated with technology. Learn more about why [here](#inclusive).
