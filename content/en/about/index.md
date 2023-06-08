@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "This blog inclusive, free, and trustworthy!"
+description: "This blog is inclusive, free, and trustworthy!"
 date: 2023-04-21T16:41:58-06:00
 lastmod: 2023-04-21T16:41:58-06:00
 draft: false
