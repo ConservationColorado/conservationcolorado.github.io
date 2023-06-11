@@ -29,7 +29,7 @@ schemaLocale = "en-US"
 schemaLogo = "logo-doks.png"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
-schemaImage = "doks.png"
+schemaImage = "logo512.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
 schemaTwitter = "https://twitter.com/ConservationCO"
@@ -66,7 +66,7 @@ fillImage = "1270x740 Center" # normalize image size
 footer = ""
 
 # Alert
-alert = true
+alert = false
 alertDismissable = false
 alertText = "🚧 Please excuse the mess... This website is under construction!"
 

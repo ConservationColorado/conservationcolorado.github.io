@@ -14,6 +14,7 @@
     </div>
   </div>
   <div class="col-md-12 col-lg-9">
+    {{ partial "sidebar/docs-toc.html" . }}
     {{ .Content }}
     {{ if .Params.tags -}}
     <div class="mt-4">
@@ -23,6 +24,7 @@
     </div>
     {{ end -}}
   </div>
+
 </div>
 </article>
 
