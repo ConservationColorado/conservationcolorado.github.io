@@ -4,24 +4,16 @@ url = "/about/"
 weight = 20
 
 [[main]]
-name = "Blog"
-weight = 30
-identifier = "get-started"
-url = "/docs/prologue/introduction/"
+name = "Categories"
+weight = 1
+url = "/categories/"
+parent = "Blog"
 
 [[main]]
-name = "Blog"
-weight = 40
-identifier = "quick-start"
-url = "/docs/prologue/quick-start/"
-parent = "get-started"
-
-[[main]]
-name = "Tutorial"
-weight = 50
-identifier = "tutorial"
-url = "https://getdoks.org/tutorial/introduction/"
-parent = "get-started"
+name = "Glossary"
+weight = 2
+url = "/glossary/"
+parent = "Blog"
 
 [[social]]
 name = "GitHub"
