@@ -158,17 +158,17 @@ adding second factor authentication, starting with high value accounts.
 This was obviously painful, but it was the only way for us to regain control of the
 situation. We set aside time for this over the course of one week.
 
-In situations like this, keep your staff informed. Remember that you serve them! Empathize
-with the fact that internet security is not at the top of most people's interesting
-activity list. Keep your discussions clear and actionable! Avoid jargon -- it's easy to
-miscommunicate with. People don't need to know about PBKDFs and related varieties, or how
-LastPass should have long ago introduced a more
+In situations like this, we strive to keep our staff informed. Remember that, as an
+organization admin,  you serve your staff! Empathize with the fact that internet security
+is not at the top of most people's interesting activity list. Keeping your discussions
+clear, actionable, and free from jargon to communicate the important stuff well. People
+don't need to know about PBKDFs, or how LastPass should have introduced a more
 [memory-hard key derivation function](https://en.wikipedia.org/wiki/Argon2). Spare those
 details ;)
 
 Even if you work in a technical setting, strive to make working with your organization's
-security policies simple. Make yourself available to answer questions, whether at help
-desks, info sessions, or chat spaces.
+security policies simple. Make yourself available to answer questions at help desks, info
+sessions and chat spaces.
 
 Regular conversations about security benefit you in situations like this. Share and
 discuss plenty of resources like the following:
@@ -292,8 +292,7 @@ I've included some migration steps for you below!
 
 #### Migration steps for LastPass
 
-Follow these steps if you’re using LastPass as part of Conservation Colorado’s team 
-organization.
+Follow these steps if you’re using LastPass.
 1. Log into your LastPass vault in your web browser
 2. On the bottom left, select Advanced Options
 3. Under “Manage your vault”, click “Export”. You may have to enter your LastPass main password
