@@ -16,8 +16,8 @@ mermaid: true
 
 {{< alert icon="☀️" text="The main audience of this post is organization administrators." />}}
 
-In this article, I'll talk retrospectively about our organization's recent migration from LastPass to Bitwarden. I'll
-talk about why we made the change and how we did it.
+In this article, I'll talk retrospectively about our organization's recent migration from LastPass to Bitwarden,
+including why we made the change and how we did it.
 
 We've decided to open source this information to fill in gaps we found in documentation online. Plus, we're a big fan of
 password managers and want to make great security accessible!
@@ -35,12 +35,12 @@ learned about this in January 2023, we knew we needed to use a different tool to
 
 ## Quick background on how most password managers work
 
-Terms you need to know before we discuss what happened and how we’ll respond are:*vault*, *entry*, *encrypt/decrypt*,
+Terms you need to know before we discuss what happened and how we’ll respond are: *vault*, *entry*, *encrypt/decrypt*,
 and *main password*. We’ll discuss each.
 
-LastPass stores your data in a vault. This vault belongs only to you (ideally!). You can(also ideally!) only access this
-vault through LastPass, for example, using a LastPass browser extension, web app, or mobile app. LastPass also keeps a
-backup of your vault on their servers.
+LastPass stores your data in a vault. This vault belongs only to you (ideally!). You can (also ideally!) only access
+this vault through LastPass, for example, using a LastPass browser extension, web app, or mobile app. LastPass also
+keeps a backup of your vault on their servers.
 
 Your vault stores everything that belongs to you as entries, which are the individual items that you have stored on
 LastPass. These are commonly passwords, but you can also store notes, addresses, credit card numbers, files, and so on.
@@ -83,14 +83,14 @@ Broadly, two types of data:
 
 Attackers can use data related to who you are for targeted phishing attacks and social engineering.
 
-They also have a stolen snapshot of all LastPass vault data. Critically, since that data totally offline, security
-measures normally in place when accessing LastPass are bypassed. This includes any limits on how many failed login
-attempts they can make. Normally, after 8 invalid attempts, LastPass temporarily suspends your account. Second- or
-multi-factor authentication you use to verify yourself when accessing LastPass is also moot.
+They also have a stolen snapshot of all LastPass vault data. Critically, since that data is totally offline,
+security measures normally in place when accessing LastPass are bypassed. This includes any limits on how many
+failed login attempts they can make. Normally, after 8 invalid attempts, LastPass temporarily suspends your
+account. Second- or multi-factor authentication you use to verify yourself when accessing LastPass is also moot.
 
 The only thing protecting your stolen vault is the strength of your main password. Though unlikely, anyone with your
 stolen vault could brute-force this password. LastPass's password hashing function would slow them down; by how much
-depends on you [iteration settings](https://security.stackexchange.com/a/267278).
+depends on your [iteration settings](https://security.stackexchange.com/a/267278).
 
 LastPass also revealed that they never encrypted URLs in your vault. This allows attackers to categorize entries and
 divert resources to entries containing logins to specific sites, such as banks, payroll, and other accounts known to
@@ -147,21 +147,21 @@ accounts.
 This was obviously painful, but it was the only way for us to regain control of the situation. We set aside time for
 this over the course of one week.
 
-In situations like this, we strive to keep our staff informed. Remember that, as an organization admin, you serve your
-staff! Empathize with the fact that internet security is not at the top of most people's interesting activity list.
-Keeping your discussions clear, actionable, and free from jargon to communicate the important stuff well. People don't
+In situations like this, we strive to keep our staff informed. We create opportunities where we can serve their needs.
+We also empathize with the fact that internet security is not at the top of most people's interesting activity list.
+Keeping discussions clear, actionable, and free from jargon makes communicating the important stuff easy. People don't
 need to know about PBKDFs, or how LastPass should have introduced a
 more [memory-hard key derivation function](https://en.wikipedia.org/wiki/Argon2). Spare those details ;)
 
-Even if you work in a technical setting, strive to make working with your organization's security policies simple. Make
-yourself available to answer questions at help desks, info sessions and chat spaces.
+Even in a technical setting, we work hard to make working with our organization's security policies simple, and make
+ourselves available to answer questions at help desks, info sessions and chat spaces.
 
-Regular conversations about security benefit you in situations like this. Share and discuss plenty of resources like the
-following:
+Regular conversations about security are helpful in situations like this. We shared and discussed plenty of resources
+like the following:
 
-* Your time and availability you've set aside to help staff on this specific issue
-* What services you expect people to reset first
-* Relevant parts of your organization's security policy
+* Time to help staff on this specific issue
+* What services we expected people to reset first
+* Relevant parts of our organization's security policy
 * What makes a good password
 * How to use a password generator
 * How to update passwords on a particular service
@@ -187,7 +187,7 @@ free tier availability.
 | Send data       |     ☐     |     ☑     |    ☐     |
 | Sharing entries |     ☑     |     ☑     |    ☑     |
 | Zero knowledge  |     ☑     |     ☑     |    ☐     |
-| Browser addon   |     ☑     |     ☑     |    ☑     |
+| Browser addons  |     ☑     |     ☑     |    ☑     |
 | Import          |     ☑     |     ☑     |    ☑     |
 | Export          |     ☑     |     ☑     |    ☑     |
 | Open source     |     ☐     |     ☑     |    ☐     |
@@ -212,8 +212,8 @@ There were a few benefits to this:
 
 ### Planned the migration from all angles
 
-We planned this step carefully to avoid losing data and to ensure that people have continuous access to the secrets they
-need to do their work! We identified the what, who, and who of other password managers in use at your organization.
+We planned this step carefully to avoid losing data and to ensure that people had continuous access to the secrets they
+need to do their work! We identified the who, what, and how of all the password managers in use at our organization.
 
 Our password management scenario was challenging. We never had a password manager used organization-wide. As a result,
 we had five total scenarios:
@@ -270,7 +270,7 @@ I've included some migration steps for you below!
 
 ### Sample migration guides
 
-#### Migration steps for LastPass
+#### Sample migration steps for LastPass Individual
 
 Follow these steps if you’re using LastPass.
 
@@ -306,7 +306,7 @@ Follow these steps if you’re using LastPass.
 **Note:** Importing your vault data does not check whether what you’re importing already exists in your vault. If you
 import multiple files or import files with items already in your vault, this will create duplicates.
 
-#### Migration steps for Google Passwords
+#### Sample migration steps for Google Passwords
 
 Follow these steps if you’re using Google Password Manager on your Google Workspace account.
 
@@ -334,7 +334,7 @@ import multiple files or import files with items already in your vault, this wil
 
 ### Launch!
 
-When you're ready, work out a launch date and make your announcement! This is where your prep work will pay off.
+Once we were ready, we worked out a launch date and made the announcement! This is where your prep work will pay off.
 
 Processes like this work best when you communicate regularly and clearly. We set aside help desk time over the first two
 weeks to specifically assist our staff in migrating their data. We also took this time to ensure everyone had two-factor
