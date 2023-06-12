@@ -43,6 +43,6 @@ body::before {
   opacity: 0.4;
 }
 
-[data-dark-mode] body::before { 
-  opacity: 1.0;
+[data-dark-mode] body::before {
+  opacity: 1;
 }
