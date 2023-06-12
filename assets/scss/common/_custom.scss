@@ -25,3 +25,24 @@
   width: 10%;
   margin-right: 10px;
 }
+
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/topo.svg");
+  background-repeat: repeat;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+[data-dark-mode] body::before { 
+  opacity: 1.0;
+}
