@@ -1,6 +1,6 @@
 <div align="center">
-
-[![Build and deploy tech.conservationco.org](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/pages/pages-build-deployment)
+  
+[![Build and deploy tech.conservationco.org](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml)
 [![Node.js CI](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/node.js-ci.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/node.js-ci.yml)
 
 </div>
