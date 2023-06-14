@@ -1,13 +1,19 @@
 <div align="center">
-  
-[![Build and deploy tech.conservationco.org](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml)
+
 [![Node.js CI](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/node.js-ci.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/node.js-ci.yml)
+[![Build and deploy tech.conservationco.org](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml)
 
 </div>
 
-# Welcome to Conservation Colorado's technology blog
+# Conservation Colorado's Technology Blog
 
-Happy you're here! This repository contains code for Conservation Colorado's technology blog,
+<div align="center">
+
+<img src="docs/light-theme-preview.png" alt="Image preview of tech.conservationco.org open on multiple devices">
+
+</div>
+
+Welcome! This repository contains code for Conservation Colorado's technology blog,
 [tech.conservationco.org](https://tech.conservationco.org).
 
 We use this inclusive, free, and trustworthy space to share ways you can better use technology in your work.
