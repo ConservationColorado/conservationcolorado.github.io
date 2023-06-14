@@ -1,5 +1,5 @@
 # Builds and deploys the Hugo site in this repository to GitHub Pages
-name: Deploy Hugo site to Pages
+name: Build and deploy tech.conservationco.org
 
 # Run on pushes to main; also allow manual runs from Actions tab
 on:
