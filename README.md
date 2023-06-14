@@ -1,5 +1,7 @@
-<div style="text-center">
+<div align="center">
+  
 [![Build and deploy tech.conservationco.org](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml/badge.svg)](https://github.com/ConservationColorado/conservationcolorado.github.io/actions/workflows/hugo-build-and-deploy.yml)
+
 </div>
 
 # Welcome to Conservation Colorado's technology blog
