@@ -1,12 +1,13 @@
 ---
 title: "Contact"
-description: "Drop us an email."
-date: 2020-08-27T19:25:12+02:00
-lastmod: 2020-08-27T19:25:12+02:00
+description: "Get in touch with us, or submit a report"
+date: 2023-02-06
+lastmod: 2023-02-06
 images: [ ]
 ---
 
-You can reach us by emailing us at {{< email user="admin" domain="conservationco.org" >}}.
+You can reach us by emailing us at
+<a href="mailto:admin@conservationco.org?subject=Conservation%20Colorado's%20Tech%20Blog">admin@conservationco.org</a>.
 
-If there's a problem with the site, you
-can [create an issue on GitHub at this link](https://github.com/ConservationColorado/conservationcolorado.github.io/issues).
+If there's a problem with the site,
+[please create an issue on GitHub at this link](https://github.com/ConservationColorado/conservationcolorado.github.io/issues).

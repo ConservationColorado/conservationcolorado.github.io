@@ -48,3 +48,8 @@ weight = 3
 name = "Glossary"
 url = "/glossary/"
 weight = 4
+
+[[footer]]
+name = "Privacy"
+url = "/privacy/"
+weight = 5
