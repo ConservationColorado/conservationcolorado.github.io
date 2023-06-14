@@ -20,3 +20,7 @@
   margin-top: 2px;
   margin-bottom: 1em;
 }
+
+[data-dark-mode] .card-body {
+  color: $body-color-dark;
+}
