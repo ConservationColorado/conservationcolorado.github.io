@@ -1,8 +1,8 @@
 .glossary-tooltip {
   display: inline-block;
   position: relative;
-  border-bottom: 1px dashed black;
-  color: black;
+  border-bottom: 1px dashed $body-color;
+  color: $body-color;
   text-decoration: none !important;
   transition: opacity 0.3s, visibility 0.3s;
 }
@@ -24,4 +24,9 @@
 .glossary-tooltip:hover::before {
   display: block;
   opacity: 1;
+}
+
+[data-dark-mode] .glossary-tooltip {
+  color: $body-color-dark;
+  border-bottom: 1px dashed $body-color-dark;
 }
