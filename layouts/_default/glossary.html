@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+      {{ $glossaryBundle := site.GetPage "page" "glossary" }}
+      {{- if $glossaryBundle -}}
+        {{ $pages := $glossaryBundle.Resources.ByType "page" }}
+        {{- range site.Params.language_alternatives -}}
+          {{- with (where $glossaryBundle.Translations ".Lang" . ) -}}
+            {{- $p := (index . 0) -}}
+            {{- $pages = $pages | lang.Merge ($p.Resources.ByType "page") -}}
+          {{- end -}}
+        {{ end }}
+      {{- $.Scratch.Set "glossary_items"  $pages -}}
+      {{- range $pages -}}
+        <h3><a href="{{ $.Page.RelPermalink }}#{{ .Params.id }}">{{ .Params.Title }}</a></h3>
+        {{ .Content }}
+      {{- end -}}
+      {{- else -}}
+      {{- errorf "[%s] Glossary Bundle not found for language. Create at least an index.md file inside docs/reference/glossary" site.Language.Lang -}}
+      {{- end -}}
+   </article>
+  </div>
+</div>
+{{ end }}

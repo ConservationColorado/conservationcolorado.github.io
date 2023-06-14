@@ -1,16 +1,9 @@
 ---
-approvers:
-- chenopis
-- abiogenesis-now
-title: Glossary
+title: "Glossary"
+description: ""
+date: 2023-06-13T14:06:35-06:00
+lastmod: 2023-06-13T14:06:35-06:00
+draft: false
+images: []
 layout: glossary
-noedit: true
-default_active_tag: fundamental
-weight: 5
-card:
-  name: reference
-  weight: 10
-  title: Glossary
 ---
-
-Something about a glossary

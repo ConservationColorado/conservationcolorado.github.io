@@ -1,6 +1,6 @@
 {{- $id := .Get "term_id" -}}
 {{- $text := .Get "text" -}}
-{{- partial "docs/glossary-terms.html" $.Page -}}
+{{- partial "glossary-terms.html" $.Page -}}
 {{- $glossary_items := $.Page.Scratch.Get "glossary_items" -}}
 {{- if not $glossary_items -}}
 {{- errorf "[%s] No glossary items found" site.Language.Lang -}}
@@ -17,7 +17,7 @@
 
 {{- $tooltip := $tooltip | replaceRE "(?s)<a class='glossary-tooltip'.*?>(.*?).*</a>" "$1" | plainify -}}
 {{- $tooltip := trim $tooltip " \n" -}}
-<a class='glossary-tooltip' title='{{- $tooltip | safeHTML -}}' data-toggle='tooltip' data-placement='top' href='{{ $external_link }}' target='_blank' aria-label='{{ $text }}'>
+<a class='glossary-tooltip' data-title='{{- $tooltip | safeHTML -}}' data-toggle='tooltip' data-placement='top' href='{{ $external_link }}' aria-label='{{ $text }}'>
 {{- $text -}}
 </a>
 {{- end -}}
