@@ -36,12 +36,12 @@ your other passwords, it's very important that you select a good one!
 
 Here are some recommendations to help you get started.
 
-__Pick a new password you haven't used anywhere else__
+### Pick a new password you haven't used anywhere else
 
 Remember that this password will protect all your secure data! Do not use a password that
 you’ve used anywhere else.
 
-__Select a few random words__
+### Select a few random words
 
 A password with truly random words (3 to 5, more is better) like…
 
@@ -55,7 +55,7 @@ a computer to guess.
 If it helps, you can start with 3 random words, then add a 4th and 5th word over time as
 you memorize the start of your password.
 
-__A note on phrases as passwords__
+### A note on phrases as passwords
 
 Song lyrics and idioms as passwords are OK, but keep in mind that people have shared
 experiences and tend to select phrases that are very common. This is why truly random
@@ -73,13 +73,13 @@ can use it.
 
 ### Bitwarden: Automatically generate
 
-You'll need the Bitwarden extension installed to follow these steps 
+You'll need the Bitwarden extension installed to follow these steps
 ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/),
 [Chrome](https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb)).
 
 1. Right click anywhere on the a web page
 2. In the context menu that appears, click "Bitwarden" > "Generate password (copied)"
-3. To use that password, paste it from your clipboard with `⌘ Cmd + V (macOS)` or 
+3. To use that password, paste it from your clipboard with `⌘ Cmd + V (macOS)` or
    `⌃ Ctrl + V` (Windows & Linux)
 
 Once you submit that password on a web page, Bitwarden will offer to save it for you.
@@ -88,6 +88,7 @@ the information you have saved. Take advantage of this feature to automatically 
 that password in a vault entry!
 
 ### Bitwarden: Manually generate
+
 You can also manually access the generator by logging into your account on the web or
 using the browser extension.
 
