@@ -9,7 +9,7 @@ weight: 50
 images: ["passwords.png"]
 categories: ["Security"]
 tags: ["passwords", "password-manager", "Bitwarden", "security", "best-practices", "secrets-management", "online-safety"]
-contributors: []
+contributors: ["Oliver Abdulrahim"]
 pinned: false
 homepage: false
 toc: true
