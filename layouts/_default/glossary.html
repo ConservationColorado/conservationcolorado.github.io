@@ -15,7 +15,7 @@
         {{ end }}
       {{- $.Scratch.Set "glossary_items"  $pages -}}
       {{- range $pages -}}
-        <h3><a href="{{ $.Page.RelPermalink }}#{{ .Params.id }}">{{ .Params.Title }}</a></h3>
+        <h3><a href="{{ $.Page.RelPermalink }}#{{ replace .Params.Title " " "-" | lower }}">{{ .Params.Title }}</a></h3>
         {{ .Content }}
       {{- end -}}
       {{- else -}}
