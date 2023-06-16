@@ -7,8 +7,8 @@ lastmod: 2023-06-15T12:53:00-06:00
 draft: false
 weight: 50
 images: ["passwords.png"]
-categories: []
-tags: []
+categories: ["Security"]
+tags: ["passwords", "password-manager", "Bitwarden", "security", "best-practices", "secrets-management", "online-safety"]
 contributors: []
 pinned: false
 homepage: false
