@@ -11,15 +11,28 @@ weight = 2
 name = "All Posts"
 url = "/blog/"
 parent = "Blog"
+weight = 1
 
 [[main]]
 name = "Categories"
 url = "/categories/"
 parent = "Blog"
+weight = 2
+
+[[main]]
+name = "Tags"
+url = "/tags/"
+parent = "Blog"
+weight = 3
+
+[[main]]
+name = "Contributors"
+url = "/contributors/"
+parent = "Blog"
+weight = 4
 
 [[main]]
 name = "Glossary"
-weight = 2
 url = "/glossary/"
 
 [[social]]
