@@ -26,12 +26,6 @@ parent = "Blog"
 weight = 3
 
 [[main]]
-name = "Contributors"
-url = "/contributors/"
-parent = "Blog"
-weight = 4
-
-[[main]]
 name = "Glossary"
 url = "/glossary/"
 
@@ -53,16 +47,26 @@ url = "/about/"
 weight = 2
 
 [[footer]]
+name = "Contact"
+url = "/contact/"
+weight = 3
+
+[[footer]]
 name = "Blog"
 url = "/blog/"
-weight = 3
+weight = 4
+
+[[footer]]
+name = "Contributors"
+url = "/contributors/"
+weight = 5
 
 [[footer]]
 name = "Glossary"
 url = "/glossary/"
-weight = 4
+weight = 6
 
 [[footer]]
 name = "Privacy"
 url = "/privacy/"
-weight = 5
+weight = 6
