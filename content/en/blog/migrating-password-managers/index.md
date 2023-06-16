@@ -8,7 +8,7 @@ draft: false
 weight: 100
 images: [ "bitwarden.png" ]
 categories: [ "Security" ]
-tags: [ "passwords", "password managers", "security", "Bitwarden", "LastPass", "Google Passwords" ]
+tags: [ "guide", "how-to", "moving-password-managers", "passwords", "password-managers", "password-manager-comparison", "security", "Bitwarden", "LastPass", "Google-Passwords", "it-management", "organizational-change", "LastPass-breach", "encryption" ]
 contributors: [ "Oliver Abdulrahim" ]
 toc: true
 mermaid: true

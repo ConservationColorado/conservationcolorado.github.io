@@ -11,15 +11,22 @@ weight = 2
 name = "All Posts"
 url = "/blog/"
 parent = "Blog"
+weight = 1
 
 [[main]]
 name = "Categories"
 url = "/categories/"
 parent = "Blog"
+weight = 2
+
+[[main]]
+name = "Tags"
+url = "/tags/"
+parent = "Blog"
+weight = 3
 
 [[main]]
 name = "Glossary"
-weight = 2
 url = "/glossary/"
 
 [[social]]
@@ -40,16 +47,26 @@ url = "/about/"
 weight = 2
 
 [[footer]]
+name = "Contact"
+url = "/contact/"
+weight = 3
+
+[[footer]]
 name = "Blog"
 url = "/blog/"
-weight = 3
+weight = 4
+
+[[footer]]
+name = "Contributors"
+url = "/contributors/"
+weight = 5
 
 [[footer]]
 name = "Glossary"
 url = "/glossary/"
-weight = 4
+weight = 6
 
 [[footer]]
 name = "Privacy"
 url = "/privacy/"
-weight = 5
+weight = 6
