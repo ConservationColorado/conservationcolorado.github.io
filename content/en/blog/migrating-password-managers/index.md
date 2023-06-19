@@ -20,7 +20,7 @@ In this article, I'll talk retrospectively about our organization's recent migra
 including why we made the change and how we did it.
 
 We've decided to open source this information to fill in gaps we found in documentation online. Plus, we're a big fan of
-{{< glossary-tooltip term_id=password-manager >}} tools and want to make great security accessible!
+{{< glossary-tooltip id=password-manager >}} tools and want to make great security accessible!
 
 These steps apply to any other password manager your organization may want to use, whether you're switching providers
 like we did or starting to use a password manager for the first time.
