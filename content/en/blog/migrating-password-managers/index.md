@@ -35,8 +35,9 @@ learned about this in January 2023, we knew we needed to use a different tool to
 
 ## Quick background on how most password managers work
 
-Terms you need to know before we discuss what happened and how we’ll respond are: *vault*, *entry*, *encrypt/decrypt*,
-and *main password*. We’ll discuss each.
+Terms you need to know before we discuss what happened and how we responded are: {{< glossary-tooltip id=vault >}},
+{{< glossary-tooltip id=encryption >}}, and {{< glossary-tooltip id=main-password >}}. Hover over for definitions;
+we’ll also discuss each below.
 
 LastPass stores your data in a vault. This vault belongs only to you (ideally!). You can (also ideally!) only access
 this vault through LastPass, for example, using a LastPass browser extension, web app, or mobile app. LastPass also

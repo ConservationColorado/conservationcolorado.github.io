@@ -1,6 +1,6 @@
 ---
 title: "Vault"
-description: "A digital container within a password manager that securely stores secrets like passwords."
+description: "A digital container that securely stores secrets like passwords."
 date: 2023-06-16T13:22:17-06:00
 lastmod: 2023-06-16T13:22:17-06:00
 images: []
