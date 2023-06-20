@@ -9,5 +9,5 @@
   {{ end }}
   {{- $.Scratch.Set "glossary_items" $pages -}}
 {{- else -}}
-{{- errorf "[%s] Glossary Bundle not found for language. Create at least an index.md file inside glossary/" site.Language.Lang -}}
+{{- errorf "[%s] Glossary Bundle not found for language. Create at least an index.md file inside /glossary/" site.Language.Lang -}}
 {{- end -}}

@@ -22,7 +22,7 @@ stay secure online!
 
 ## What makes a good password?
 
-A good {{< glossary-tooltip term_id=password >}} has a combination of strength, length, and
+A good {{< glossary-tooltip id=password >}} has a combination of strength, length, and
 uniqueness.
 
 * Strong: non-repeating, non-consecutive characters
