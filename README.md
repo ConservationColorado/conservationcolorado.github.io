@@ -45,3 +45,28 @@ npm run start
 
 The latest revision of the site is built and deployed automatically on push to `main`. It's available online at
 [tech.conservationco.org](https://tech.conservationco.org).
+
+## Creating pages
+
+### Blog posts
+
+To create a blog post, run the `npm create` script:
+
+```shell
+npm run create blog/your-post-title.md
+```
+
+### Glossary entries
+
+To create a glossary entry, run the `npm create` script:
+
+```shell
+npm run create glossary/your-glossary-entry.md
+```
+
+To include that glossary item with a hoverable tooltip in text, use the following 
+[shortcode](https://gohugo.io/content-management/shortcodes/) in a Markdown file:
+
+```golang
+{{< glossary-tooltip id=your-glossary-entry >}}
+```
