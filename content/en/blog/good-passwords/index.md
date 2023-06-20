@@ -31,8 +31,9 @@ uniqueness.
 
 ## Tips for creating a main password for your password manager
 
-We use Bitwarden at our organization. Since your Bitwarden main password protects all
-your other passwords, it's very important that you select a good one!
+We use Bitwarden at our organization. Since your Bitwarden
+{{< glossary-tooltip id=main-password >}} protects all your other passwords, it's very
+important that you select a good one!
 
 Here are some recommendations to help you get started.
 
