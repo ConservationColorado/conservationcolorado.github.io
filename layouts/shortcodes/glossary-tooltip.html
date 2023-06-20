@@ -1,7 +1,7 @@
 {{- $id := .Get "id" -}}
 {{- $text := .Get "text" -}}
 {{- partial "glossary-terms.html" $.Page -}}
-u{{- $glossary_items := $.Page.Scratch.Get "glossary_items" -}}
+{{- $glossary_items := $.Page.Scratch.Get "glossary_items" -}}
 {{- if not $glossary_items -}}
   {{- errorf "[%s] No glossary items found" site.Language.Lang -}}
 {{- else -}}
