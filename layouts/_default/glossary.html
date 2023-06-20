@@ -13,14 +13,16 @@
             {{- $pages = $pages | lang.Merge ($p.Resources.ByType "page") -}}
           {{- end -}}
         {{ end }}
-      {{- $.Scratch.Set "glossary_items"  $pages -}}
       {{- $sortedPages := sort $pages ".Params.Title" -}}
       {{- range $sortedPages -}}
-        <h3><a href="{{ $.Page.RelPermalink }}#{{ replace .Params.Title " " "-" | lower }}">{{ .Params.Title }}</a></h3>
+        {{- $entryId := replace .Params.Title " " "-" | lower -}}
+        <h3 id="{{ $entryId }}">
+          <a class="glossary-entry" href="{{ $.Page.RelPermalink }}#{{ $entryId }}">{{ .Params.Title }}</a>
+        </h3>
         {{ .Content }}
       {{- end -}}
       {{- else -}}
-      {{- errorf "[%s] Glossary Bundle not found for language. Create at least an index.md file inside docs/reference/glossary" site.Language.Lang -}}
+        {{- errorf "[%s] Glossary not found for language. Create at least an index.md file inside /glossary/" site.Language.Lang -}}
       {{- end -}}
    </article>
   </div>

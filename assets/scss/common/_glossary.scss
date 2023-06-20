@@ -31,3 +31,11 @@
   color: $body-color-dark;
   border-bottom: 1px dashed $body-color-dark;
 }
+
+.glossary-entry {
+  color: $body-color;
+}
+
+[data-dark-mode] .glossary-entry {
+  color: $body-color-dark;
+}
