@@ -23,25 +23,59 @@ This site is built using HTML, SCSS, JavaScript, and Hugo (Doks starter theme).
 
 ## Running the site locally
 
-To run the site on your computer, first, clone this repository:
+To run the site locally in a development environment, first, clone this repository:
 
 ```shell
-git clone git@github.com:ConservationColorado/conservationcolorado.github.io
+git clone git@github.com:ConservationColorado/conservationcolorado.github.io      # over SSH
+git clone https://github.com/ConservationColorado/conservationcolorado.github.io  # over HTTPS
 ```
 
-Then, you'll want to install dependencies using `npm`:
+Then, you'll want to install its dependencies using `npm`:
 
 ```shell
 npm install
 ```
 
-To start the server locally on `http://localhost:1313`, again use `npm`:
+Finally, to start the server locally on `http://localhost:1313`, use the `npm start` script:
 
 ```shell
 npm run start
 ```
 
+> **Note** If you already have a server listening on `:1313`, Hugo will
+[select another random available port](https://gohugo.io/commands/hugo_server/). Check your console output
+for more details.
+
 ## Deployment
 
 The latest revision of the site is built and deployed automatically on push to `main`. It's available online at
-[tech.conservationco.org](https://tech.conservationco.org).
+[tech.conservationco.org](https://tech.conservationco.org)!
+
+## Creating pages
+
+### Blog posts
+
+To create a blog post, run the `npm create` script:
+
+```shell
+npm run create blog/your-post-title.md
+```
+
+All English blog posts are stored in the `./content/en/blog/` directory.
+
+### Glossary entries
+
+To create a glossary entry, run the `npm create` script:
+
+```shell
+npm run create glossary/your-glossary-entry.md
+```
+
+All English glossary entries are stored in the `./content/en/glossary/` directory
+
+To include that glossary entry with a hoverable tooltip in text, use the following
+[shortcode](https://gohugo.io/content-management/shortcodes/) in a Markdown file:
+
+```golang
+{{< glossary-tooltip id=your-glossary-entry >}}
+```
