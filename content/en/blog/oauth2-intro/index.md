@@ -35,33 +35,63 @@ A lot of "magic" happens behind the scenes in the most common OAuth *flow*
 implemented in mobile and web apps. This is the *authorization code flow* and
 the *authorization code flow with proof key for code exchange (PKCE)*. While 
 both flows achieve the same thing and one supersedes the other, it's worth
-knowing about both. By the end of this article, you'll be ready to start 
-implementing OAuth in your application!
+knowing about both. 
+
+While you can follow the OAuth specification and implement your own
+authorization server, this article will discuss using an external authorization
+provider. By the end of this article, you'll be ready to start 
+implementing OAuth flows in your application!
 
 ## OAuth jargon defined
 
-There are several OAuth2.0 flows defined in the 
-[specification](https://www.rfc-editor.org/rfc/rfc6749). I'll discuss the 
-authorization code flow in plain terms.
+There are several OAuth2.0 flows and lots of terms defined in the 
+[specification](https://www.rfc-editor.org/rfc/rfc6749).
 
-Terms you'll need to know are 
-{{< glossary-tooltip id="authentication" >}},
-{{< glossary-tooltip id="authorization" >}},
-{{< glossary-tooltip id="authorization-provider" >}},
-{{< glossary-tooltip id="authorization-server" >}},
-{{< glosasry-tooltip id="client-application" >}},
-{{< glossary-tooltip id="resource-owner" >}},
-{{< glossary-tooltip id="resource-server" >}},
-{{< glosasry-tooltip id="access-token" >}},
-{{< glossary-tooltip id=redirect-uri >}}.
-Hover over each to learn more.
+I want to start by introducing the most important of these in plain terms.
+Hover over each concept to learn more. 
 
-## Why learn about OAuth2.0?
+Don't worry about memorizing these, just get familiar. I'll describe everything
+further in a flowchart later on.
 
-If you're using modern APIs on behalf of users, you will need to implement
-OAuth2.0; it's a great option to consider even if you don't because:
+#### General security terms
+It's good to differentiate
+{{< glossary-tooltip id="authentication" >}} and
+{{< glossary-tooltip id="authorization" >}}. The former concerns *who* can
+access something protected, and the latter is all about *what* things you're
+permitted to access and to do within that system.
 
-1. You'll have great user experience out of the box
+#### OAuth entities
+
+Getting more OAuth-specific, the
+{{< glossary-tooltip id="authorization-provider" >}} and
+{{< glossary-tooltip id="authorization-server" >}} relate to the components
+that verify if you're allowed to access the things you're asking for.
+
+In contrast, the {{< glossary-tooltip id="resource-server" >}} is what keeps 
+the data you're interested in accessing on behalf of the user. In many cases,
+the authorization provider also manages the resource server. In our example
+from earlier, Google maintains a user's identity *and* their Google Photos
+data. On the topic of users, you may also hear about the 
+{{< glossary-tooltip id="resource-owner" >}}, which just describes the user
+themselves.
+
+Your code fits into all of this as the
+{{< glossary-tooltip id="client-application" >}}. This is what the user
+consents to have do things on their behalf.
+
+#### OAuth flow final steps
+
+The {{< glossary-tooltip id="access-token" >}} and
+{{< glossary-tooltip id="redirect-uri" >}} are related to the final steps
+of the OAuth flow.
+
+## Why learn about OAuth?
+
+If you're using modern APIs on behalf of users, you will likely need to
+implement OAuth to get started. Regardless, it's a great option to consider
+even if you don't fall into this category because:
+
+1. OAuth provides a great user experience out of the box
 2. You don't have to store passwords (though you will still manage secrets)
 3. You can access specific user data without asking for any account-wide
    credentials
