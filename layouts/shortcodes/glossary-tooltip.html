@@ -9,16 +9,21 @@
   {{- if not $term_info -}}
     {{- errorf "[%s] %q: %q is not a valid id, see /glossary/ for a full list" site.Language.Lang .Page.Path $id -}}
   {{- end }}
+
+  {{- $acronyms := slice "URI" "OAuth" "API" }} <!-- Add any acronyms you want to preserve here -->
   {{- with $term_info -}}
-    {{- $text := $text | default $term_info.Title -}}
     {{- $glossary_home := "glossary" | relLangURL -}}
     {{- $external_link := printf "%s#%s" $glossary_home $id | safeURL  -}}
-    {{- $tooltip :=  $term_info.Params.description | markdownify -}}
-
-    {{- $tooltip := $tooltip | replaceRE "(?s)<a class='glossary-tooltip'.*?>(.*?).*</a>" "$1" | plainify -}}
+    {{- $tooltip := $term_info.Params.description | markdownify -}}
     {{- $tooltip := trim $tooltip " \n" -}}
+    {{- $text := $text | default $term_info.Title -}}
+    {{- $lower := $text | lower -}}
+    {{- range $acronym := $acronyms -}}
+      {{- $lower = replaceRE (printf "(?i)\\b%s\\b" $acronym) $acronym $lower -}}
+    {{- end -}}
     <a class='glossary-tooltip' data-title='{{- $tooltip | safeHTML -}}' data-toggle='tooltip' data-placement='top' href='{{ $external_link }}' aria-label='{{ $text }}'>
-      {{- $text | lower -}}
+      {{ $lower }}
     </a>
   {{- end -}}
 {{- end -}}
+
