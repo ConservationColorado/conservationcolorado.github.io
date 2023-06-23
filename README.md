@@ -23,14 +23,25 @@ This site is built using HTML, SCSS, JavaScript, and Hugo (Doks starter theme).
 
 ## Running the site locally
 
-To run the site locally in a development environment, first, clone this repository:
+There are a few ways to get a local copy of this repository. You can use the
+`git` command in your terminal, if you have it installed:
 
 ```shell
 git clone git@github.com:ConservationColorado/conservationcolorado.github.io      # over SSH
 git clone https://github.com/ConservationColorado/conservationcolorado.github.io  # over HTTPS
 ```
 
-Then, you'll want to install its dependencies using `npm`:
+You can also use `wget`:
+
+```shell
+wget -Q https://github.com/ConservationColorado/conservationcolorado.github.io/archive/refs/heads/main.zip && unzip -q main.zip
+```
+
+Alternatively, you can
+[download a `.zip` file containing of the main branch at this link](https://github.com/ConservationColorado/conservationcolorado.github.io/archive/refs/heads/main.zip),
+then extract the contents with your operating system's file explorer.
+
+Then, you'll want to install dependencies using `npm`:
 
 ```shell
 npm install
