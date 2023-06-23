@@ -217,7 +217,6 @@ button#doks-versions {
   height: 1.5rem;
   font-size: $font-size-base * 2;
   content: "\2315";
-  filter: grayscale(100%);
 
   @include media-breakpoint-up(md) {
     right: -1.4625rem;
