@@ -218,16 +218,19 @@ secure authorization code flow with PKCE.
 
 ### How does the PKCE flow solve problems with the implicit flow?
 
-Instead of a preconfigured, agreed-upon `client_secret`, during the
-PKCE, you'll make up a new secret on the fly every time you initiate
-a flow. Then, you'll hash it and make the exchange then.
+Instead of a preconfigured, agreed-upon `client_secret` like in
+the traditional authorzation code flow, during the PKCE flow, you'll
+make up a new secret on the fly each time a user initiates the process.
+Then, you'll hash it and begin the exchange.
 
-This protects the redirect step of the process. Here, the access token
-is returned in a response to a `POST` request at the token exchange
-endpoint. This is more secure than the implicit flow provides the token
-in the final callback URL. URLs can end up in logs, bookmarks, browser
-session synchronizations, and more. They're easier to tamper with than
-network calls.
+When the flow completes, you'll receive the token in a response to the
+`POST` request you made at the token exchange endpoint. This better
+protects the redirect stage and makes the token much harder to swipe.
+
+In contrast, the implicit flow returns the token back as a URL parameter
+at the final callback location. URLs can end up in logs, bookmarks,
+browser session synchronizations, and more. They're also easier to
+tamper with than network calls over HTTPS.
 
 ## Visual representations of OAuth
 
