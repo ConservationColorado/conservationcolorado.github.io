@@ -6,7 +6,7 @@ lastmod: 2023-06-21T17:55:28-06:00
 images: []
 ---
 
-A service that implements OAuth2.0, allowing [clients](#client) to
+A service that implements OAuth, allowing [clients](#client) to
 access protected resources on behalf of users.
 
 Some examples of authorization providers include

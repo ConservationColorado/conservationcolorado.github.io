@@ -5,9 +5,9 @@ excerpt: ""
 date: 2023-06-21T10:31:20-06:00
 lastmod: 2023-06-21T10:31:20-06:00
 weight: 50
-images: []
-categories: []
-tags: []
+images: ["oauth-intro.png"]
+categories: ["OAuth2.0 Series"]
+tags: ["guide", "OAuth", "OAuth2.0", "OpenID Connect", "security", "authentication", "authorization", "authorization code flow", "authorization code flow with PKCE", "PKCE", "visualization", "software development"]
 contributors: ["Oliver Abdulrahim"]
 toc: true
 mermaid: true
@@ -46,15 +46,16 @@ is a good technology to familiarize yourself with because:
 2. OAuth provides a great user experience out of the box
 3. You don't have to store passwords (though you will still manage secrets)
 4. You can access specific user data without asking for any account-wide
-   credentials
+credentials
 
 ## What problems does OAuth solve?
 
 ### Sharing data before OAuth
 
-Before OAuth, to share say, pictures stored in your Google Photos with another
-service, you'd have to give them your credentials. That is, you would give
-someone other than Google your Google username and password!
+Before OAuth (*Open Authorization*), to share say, pictures stored in your
+Google Photos with another service, you'd have to give them your
+credentials. That is, you would give someone other than Google your Google
+username and password!
 
 This is bad because:
 
@@ -231,7 +232,8 @@ network calls.
 ## Visual representations of OAuth
 
 Here are some sequence diagrams to help you traverse each step of
-the OAuth process.
+the OAuth process. These are vectors rendered on-page, so feel free
+to zoom in!
 
 ### Authorization Code Flow
 
@@ -342,10 +344,11 @@ Set up and register your client application and prepare your:
 
 * `client_id` that identifies your unique app
 * `client_secret`, which you'll never publicize
-* `redirect_uri`, where the user ends up at the end of the flow
+* `redirect_uri`, where the user ends up at the end of the consent
+process
 * `scope` of data you want to ask users for
 
-### 3. Determine what flow you need to use
+### 3. Determine what flow to use
 
 {{< mermaid class="bg-light text-center" >}}
 ---
@@ -392,3 +395,14 @@ Security OAuth2. Here's a shortlist of client libraries:
 
 For more libraries, check out the
 [official OAuth documentation page](https://oauth.net/code/).
+
+## Conclusion
+
+I hope this article has helped you learn a bit more about OAuth flows
+and how you start to can implement them into your application.
+
+This is a complex topic, so in a future article, I'll disscus more
+specific implementation details with code examples. I'll also talk about
+combining OAuth with OIDC!
+
+--- Oliver

@@ -1,5 +1,5 @@
 ---
-title: "Creating good passwords"
+title: "Creating good, secure passwords"
 description: "Use these tips to stay secure online"
 excerpt: ""
 date: 2023-06-15T12:53:00-06:00
