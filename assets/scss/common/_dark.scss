@@ -407,7 +407,7 @@ $navbar-dark-active-color:          $link-color-dark;
 }
 
 [data-dark-mode] body .bg-light {
-  background: darken($body-bg-dark, 1.5%) !important;
+  background: lighten($body-bg-dark, 70%) !important;
 }
 
 [data-dark-mode] body .bg-dots {
