@@ -58,7 +58,7 @@ The latest revision of the site is built and deployed automatically on push to `
 To create a blog post, run the `npm create` script:
 
 ```shell
-npm run create blog/your-post-title.md
+npm run create blog/your-post-title/index.md
 ```
 
 All English blog posts are stored in the `./content/en/blog/` directory.
