@@ -12,88 +12,39 @@ contributors: ["Oliver Abdulrahim"]
 toc: true 
 ---
 
+## About this article
+
 {{< alert icon="☀️" text="The main audience of this post is developers and organization administrators." />}}
 
-In this article, I'll discuss OAuth2.0 as a way for users to authorize your
-application to act on their behalf.
+#### What I'll discuss
 
-This article *only* covers OAuth2.0, which, as the name suggests, is the second
-revision of the OAuth specification. I'll use "OAuth" and "OAuth2.0"
-interchangeably as OAuth1.0 is no longer used on the modern web.
+In this article, I'll talk about OAuth2.0 as a way for users to authorize your
+application to access their data and act on their behalf.
 
-OAuth is an *authorization* mechanism. In a future article, I'll also discuss
-OpenID Connect (ODIC), an *authentication* extension on top of OAuth. You can
-use OIDC along with OAuth (they work great in combination!) to securely manage
-user accounts within your application.
+#### What I'll save for later
 
-OAuth is widely used on the web today. If you've ever used a "Sign in with
-Google", "Sign in with Microsoft", or "Sign in with -some service name-"
-button to log on to a website, then you've used OAuth, perhaps without even
-knowing it!
+In a future article, I'll also discuss OpenID Connect (OIDC), an
+authentication extension on top of OAuth. You can use OIDC along with OAuth 
+(they work great in combination!) to securely manage user accounts within your
+application. This is a complex topic, so let's discuss it another time in more
+focus.
 
-A lot of "magic" happens behind the scenes in the most common OAuth *flow*
-implemented in mobile and web apps. This is the *authorization code flow* and
-the *authorization code flow with proof key for code exchange (PKCE)*. While 
-both flows achieve the same thing and one supersedes the other, it's worth
-knowing about both. 
+#### What I won't discuss
 
-While you can follow the OAuth specification and implement your own
-authorization server, this article will discuss using an external authorization
-provider. By the end of this article, you'll be ready to start 
-implementing OAuth flows in your application!
-
-## OAuth jargon defined
-
-There are several OAuth2.0 flows and lots of terms defined in the 
-[specification](https://www.rfc-editor.org/rfc/rfc6749).
-
-I want to start by introducing the most important of these in plain terms.
-Hover over each concept to learn more. 
-
-Don't worry about memorizing these, just get familiar. I'll describe everything
-further in a flowchart later on.
-
-#### General security terms
-It's good to differentiate
-{{< glossary-tooltip id="authentication" >}} and
-{{< glossary-tooltip id="authorization" >}}. The former concerns *who* can
-access something protected, and the latter is all about *what* things you're
-permitted to access and to do within that system.
-
-#### OAuth entities
-
-Getting more OAuth-specific, the
-{{< glossary-tooltip id="authorization-provider" >}} and
-{{< glossary-tooltip id="authorization-server" >}} relate to the components
-that verify if you're allowed to access the things you're asking for.
-
-In contrast, the {{< glossary-tooltip id="resource-server" >}} is what keeps 
-the data you're interested in accessing on behalf of the user. In many cases,
-the authorization provider also manages the resource server. In our example
-from earlier, Google maintains a user's identity *and* their Google Photos
-data. On the topic of users, you may also hear about the 
-{{< glossary-tooltip id="resource-owner" >}}, which just describes the user
-themselves.
-
-Your code fits into all of this as the
-{{< glossary-tooltip id="client-application" >}}. This is what the user
-consents to have do things on their behalf.
-
-#### OAuth flow final steps
-
-The {{< glossary-tooltip id="access-token" >}} and
-{{< glossary-tooltip id="redirect-uri" >}} are related to the final steps
-of the OAuth flow.
+We'll only talk about OAuth2.0 which, as the name suggests, is the second
+revision of the OAuth specification. As OAuth1.0 is no longer used on the 
+modern web, I'll use "OAuth" and "OAuth2.0" interchangeably.
 
 ## Why learn about OAuth?
 
 If you're using modern APIs on behalf of users, you will likely need to
-implement OAuth to get started. Regardless, it's a great option to consider
-even if you don't fall into this category because:
+implement OAuth to get started. Even if you aren't in this category, OAuth
+is a good technology to familiarize yourself with because:
 
-1. OAuth provides a great user experience out of the box
-2. You don't have to store passwords (though you will still manage secrets)
-3. You can access specific user data without asking for any account-wide
+1. OAuth is very widely used
+2. OAuth provides a great user experience out of the box
+3. You don't have to store passwords (though you will still manage secrets)
+4. You can access specific user data without asking for any account-wide
    credentials
 
 ## What problems does OAuth solve?
@@ -113,7 +64,7 @@ This is bad because:
    accessing your account without changing your password. This affects any
    other service using the same credentials.
 
-Sound scary? It is. The early internet was an interesting place.
+Sound scary? Yeah. The early internet was an interesting place.
 
 ### Sharing data after OAuth
 
@@ -134,14 +85,144 @@ This is great because:
 3. __Secure credential management:__ The service receives tokens directly from
    the authorization provider (Google, in our example).
 
-## Security is all about trade-offs
+## What is OAuth, exactly?
 
-Before I dig into the two flows, I wanted to discuss how as developers, we're
+As I touched on above, OAuth is a widely used *authorization* mechanism for
+delegated access. 
+
+If you've ever used a "Sign in with Google", "Sign in with Microsoft", or 
+"Sign in with -some service name-" button to log on to a service, then you've
+used OAuth! This allows you to grant that service access to parts of an account
+you hold with another service, all without signing up with a new password.
+
+A lot of "magic" happens behind the scenes in the most common 
+{{< glossary-tooltip id=oauth-flow >}}s implemented in mobile and web apps.
+This is the *authorization code flow*, with its close relative the 
+*authorization code flow with proof key for code exchange* (PKCE, pronounced
+'pixie' -- it's cute like that). While both flows achieve the same thing, and
+one supersedes the other, it's worth knowing about both. I'll discuss the
+history and motivation behind each.
+
+While you can follow the OAuth specification and implement your own
+authorization and resource servers, this article will discuss the more common
+use case of implementing OAuth through an external authorization provider.
+By the end of this article, you'll be ready to start implementing OAuth flows
+in your application!
+
+### OAuth important terms defined
+
+There are several flows and lots of terms defined in the 
+[OAuth2.0 specification](https://www.rfc-editor.org/rfc/rfc6749).
+
+I've highlighted the most important of these in plain words so you can 
+familiarize yourself. Hover over each concept to learn more.
+
+#### General security terms
+It's good to differentiate
+{{< glossary-tooltip id="authentication" >}} and
+{{< glossary-tooltip id="authorization" >}}. The former concerns *who* can
+access something protected, and the latter is all about *what* things you're
+permitted to access and to do within that system.
+
+#### OAuth entities
+
+Getting more OAuth-specific, the
+{{< glossary-tooltip id="authorization-provider" >}} and
+{{< glossary-tooltip id="authorization-server" >}} relate to the components
+that verify if you're allowed to access the things you're asking for.
+
+In contrast, the {{< glossary-tooltip id="resource-server" >}} is what keeps 
+the data you're interested in accessing on behalf of the user. In many cases,
+the authorization provider also manages the resource server. This is the case
+in our example from earlier, Google maintains a user's identity *and* their
+Google Photos data. On the topic of users, you may also hear about the 
+{{< glossary-tooltip id="resource-owner" >}}, which just describes the user
+themselves.
+
+Your code fits into all of this as the
+{{< glossary-tooltip id="client-application" >}}. This is what the user
+consents to have do things on their behalf.
+
+#### OAuth flow final steps
+
+The final goal for your application at the end of the OAuth flow is to get
+hold of an {{< glossary-tooltip id="access-token" >}}. This is what you'll
+use to things on behalf of a user. In our example, Google would issue an
+access token limited to the specific permissions granted to your app. Bear
+in mind that this token is considered a secret!
+
+The {{< glossary-tooltip id="redirect-uri" >}} is where the authorization
+provider sends the user back upon successful completion of the OAuth flow.
+This is typically back to your application.
+
+## About the Authorization Code Flow
+
+This flow requires your application to  client application with:
+  * `client_id`
+  * `client_secret`
+  * `redirect_uri`
+  * declared `scope` of data it asks users for
+  *
+
+## About the modified Authorization Code Flow with PKCE
+
+This flow
+
+## How to implement OAuth into your application
+
+### Best practices and security trade-offs
+
+https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics
+Before I get into details, I wanted to discuss how as developers, we're
 always balancing security with any number of other factors: usability, cost,
 convenience, performance, flexiblity, risk, and so on.
 
-The authorization code flow is meant for use when you have both a front channel
+Even though you don't handle usernames and passwords within an OAuth flow,
+you're still handling secrets (tokens). You need to understand the risks
+that introduces before you can build a secure application.
+
+### Browsers are insecure
+
+The authorization code flow is made to take advantage of the best parts
+of each element of a full stack application. 
+
+The flow starts on the front channel, typically accessed through a web
+browser. This is a great place to get user input, as browsers are fast,
+interactive, and user-friendly. At the same time, they're are also an 
+insecure, leaky environment. Anywhere you put an access token, it's 
+accessible to the browser's JavaScript engine.
+
+### Finish the flow on a secure back channel
+
+Since there's no secure API to to store secrets in a browser, the flow
+ends on a secure back channel. This is a dynamic web server that you
+create, with at least an authorization code exchange endpoint publicly
+available on the Internet. Your authorizaion provider calls this endpoint
+to finish exchanging the authorization code for tokens. 
+
+Then, your back end server stores and manages the tokens.
+
+### But what about the (deprecated) implicit flow?
+
+You may have heard about the implicit OAuth flow. This flow was 
+introduced as a workaround for applications that couldn't securely store
+a `client_secret`, like single-page and mobile applications.
+
+In the past, The PKCE version of
+the flow makes trade-offs
+meant for use when you have both a front channel
 (typically a browser or mobile app) *and* a back channel (typically)
+
+## Set up with your provider
+
+OAuth is an open standard, so the general things you need to get are the
+same across authorization providers, though the steps you take may differ.
+I'll continue with our Google example.
+
+### Create a project
+These are the only steps that are very provider-dependent. For Google,
+you'll need to 
+[create a Google Cloud project on the web](https://support.google.com/cloud/answer/6158849?hl=en).
 
 ## Authorization Code Flow
 
