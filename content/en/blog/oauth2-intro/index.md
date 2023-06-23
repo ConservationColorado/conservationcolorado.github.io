@@ -20,7 +20,8 @@ mermaid: true
 ### What I'll discuss
 
 In this article, I'll talk about OAuth2.0 as a way for users to authorize your
-application to access their data and act on their behalf.
+application to access their data and act on their behalf. In more technical
+terms, you'll learn how to create an OAuth client application.
 
 ### What I'll save for later
 
