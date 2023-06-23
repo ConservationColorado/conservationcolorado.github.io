@@ -10,6 +10,7 @@ categories: []
 tags: [] 
 contributors: ["Oliver Abdulrahim"]
 toc: true 
+mermaid: true
 ---
 
 ## About this article
@@ -155,36 +156,21 @@ The {{< glossary-tooltip id="redirect-uri" >}} is where the authorization
 provider sends the user back upon successful completion of the OAuth flow.
 This is typically back to your application.
 
-## About the Authorization Code Flow
+### Understanding OAuth's security trade-offs
 
-This flow requires your application to  client application with:
-  * `client_id`
-  * `client_secret`
-  * `redirect_uri`
-  * declared `scope` of data it asks users for
-  *
-
-## About the modified Authorization Code Flow with PKCE
-
-This flow
-
-## How to implement OAuth into your application
-
-### Best practices and security trade-offs
-
-https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics
-Before I get into details, I wanted to discuss how as developers, we're
-always balancing security with any number of other factors: usability, cost,
-convenience, performance, flexiblity, risk, and so on.
+Before I get into implementation details, I wanted to discuss how as
+developers, we're always balancing security with any number of other
+factors: usability, cost, convenience, performance, flexiblity, risk,
+and so on.
 
 Even though you don't handle usernames and passwords within an OAuth flow,
 you're still handling secrets (tokens). You need to understand the risks
 that introduces before you can build a secure application.
 
-### Browsers are insecure
-
 The authorization code flow is made to take advantage of the best parts
 of each element of a full stack application. 
+
+### Flow starts on an insecure browser front channel
 
 The flow starts on the front channel, typically accessed through a web
 browser. This is a great place to get user input, as browsers are fast,
@@ -192,7 +178,7 @@ interactive, and user-friendly. At the same time, they're are also an
 insecure, leaky environment. Anywhere you put an access token, it's 
 accessible to the browser's JavaScript engine.
 
-### Finish the flow on a secure back channel
+### Flow finishes on a secure back channel
 
 Since there's no secure API to to store secrets in a browser, the flow
 ends on a secure back channel. This is a dynamic web server that you
@@ -200,29 +186,100 @@ create, with at least an authorization code exchange endpoint publicly
 available on the Internet. Your authorizaion provider calls this endpoint
 to finish exchanging the authorization code for tokens. 
 
-Then, your back end server stores and manages the tokens.
+Then, your back end server stores, manages, and uses the tokens on behalf
+of your front channel. To keep your user's authorization, set a session
+cookie with the browser. These are very secure [with the `HttpOnly` 
+and `Secure` flags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie).
+
+There are a few advantages here:
+1. Your users' access and refresh tokens never touch the browser 
+environment
+2. Your business logic is nicely decoupled from your user interface
+3. Your front end code and state management is simplified
 
 ### But what about the (deprecated) implicit flow?
 
-You may have heard about the implicit OAuth flow. This flow was 
-introduced as a workaround for applications that couldn't securely store
-a `client_secret`, like single-page and mobile applications.
+You may have heard about the implicit grant OAuth flow. This flow was 
+introduced as a workaround with known security flaws (again, trade-offs!).
+At the time that OAuth was introduced, browsers were unable to make 
+requests across domains (the authorization code flow requires a `POST`
+request to exchange a code for a token). In other words, cross-origin
+resource sharing (CORS) was not possible.
 
-In the past, The PKCE version of
-the flow makes trade-offs
-meant for use when you have both a front channel
-(typically a browser or mobile app) *and* a back channel (typically)
+Applications that couldn't securely store a  `client_secret`, like 
+single-page and mobile applications, also defaulted to the implicit flow.
 
-## Set up with your provider
+In 2023,
+[you should *not* use the implicit flow](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#name-implicit-grant), as it is deprecated for the more
+secure authorization code flow with PKCE.
+
+## How to implement OAuth into your application
+
+### 1. Set up with your provider
 
 OAuth is an open standard, so the general things you need to get are the
-same across authorization providers, though the steps you take may differ.
+same across authorization providers, though the exact steps you take may
+differ. 
+
 I'll continue with our Google example.
 
-### Create a project
+### 2. Create a project
+
 These are the only steps that are very provider-dependent. For Google,
 you'll need to 
 [create a Google Cloud project on the web](https://support.google.com/cloud/answer/6158849?hl=en).
+
+Set up and register your client application and prepare your: 
+* `client_id` that identifies your unique app
+* `client_secret`, which you'll never publicize
+* `redirect_uri`, where the user ends up at the end of the flow
+* `scope` of data you want to ask users for
+
+### 3. Determine what flow you need to use
+
+{{< mermaid class="bg-light text-center" >}}
+---
+title: Optimal Choice Of OAuth2.0 Flow By Application Type
+---
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#C4D7A4',
+      'lineColor': '#A1A1A1',
+      'arrowheadColor': 'A1A1A1'
+    }
+  }
+}%%
+flowchart TD
+    Q[What type of application are you implementing OAuth2.0 into?]
+    Q --> SPA[Single page app]
+    Q --> MAP[Native app]
+    Q --> JS[Pure JS web app]
+    Q --> FS[Full stack web app]
+
+    SPA & MAP & JS ==> PKCE
+    FS == choose ==> PKCE & ACF
+
+    ACF[Authorization Code Flow]
+    PKCE[Authorization Code Flow with PKCE]
+{{< /mermaid >}}
+
+### 4. Find a library for your language and framework
+
+You should use a library to make an OAuth client application. Don't roll
+your own! For example, here at Conservation Colorado, we've used Spring
+Security OAuth2. Here's a shortlist of client libraries:
+
+| Language                           | Framework                                             | Dependency or library                                                                                                |
+|------------------------------------|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| JVM languages like Java and Kotlin | [Spring](https://spring.io/projects/spring-framework) | [Spring Security OAuth2.0 Client](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html) |
+| Python                             | [Flask](https://flask.palletsprojects.com/en/2.3.x/)  | [Flask OAuth Client](https://docs.authlib.org/en/latest/client/flask.html#flask-client)                              |
+| JavaScript, TypeScript             | [Express](https://expressjs.com/)                     | [Passport](https://www.passportjs.org/)                                                                              |
+| Go                                 | none required                                         | [Golang OAuth2](https://pkg.go.dev/golang.org/x/oauth2)                                                              |
+
+For more libraries, check out the 
+[official OAuth documentation page](https://oauth.net/code/).
 
 ## Authorization Code Flow
 
