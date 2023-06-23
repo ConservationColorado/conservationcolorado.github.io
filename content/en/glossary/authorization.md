@@ -17,4 +17,3 @@ Authorization can take a few forms:
 This term is all about *what* you have access to within a given system.
 Closely related but distinct is [authentication](#authentication), which is
 all about *who* has access.
-

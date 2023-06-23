@@ -14,4 +14,3 @@ tokens.
 When using an [authorization provider](#authorization-provider) like
 Google, Microsoft, or GitHub, the authorization server is external to the
 application.
-

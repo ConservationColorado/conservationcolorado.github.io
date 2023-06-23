@@ -13,4 +13,3 @@ During the OAuth flow, the user interacts with the
 [authorization server](#authorization-server) to provide consent,
 authenticate themselves, and authorize the [client](#client) to access
 their protected data.
-

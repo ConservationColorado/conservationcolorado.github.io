@@ -7,4 +7,3 @@ images: []
 ---
 
 The sequence of steps authorizing an application to act on behalf of a user.
-

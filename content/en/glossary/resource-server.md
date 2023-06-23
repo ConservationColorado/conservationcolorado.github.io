@@ -7,8 +7,7 @@ images: []
 ---
 
 The server that hosts and protects the [resource owner](#resource-owner)'s
-data in an OAuth context. 
+data in an OAuth context.
 
 This server verifies access tokens presented by the
 [client application](#client-application), granting or denying access.
-

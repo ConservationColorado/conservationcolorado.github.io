@@ -14,4 +14,3 @@ Some examples of authorization providers include
 [GitHub](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps),
 [Microsoft](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow),
 [Okta](https://developer.okta.com/docs/guides/implement-oauth-for-okta/main/).
-
