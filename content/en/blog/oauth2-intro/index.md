@@ -119,6 +119,7 @@ I've highlighted the most important of these in plain words so you can
 familiarize yourself. Hover over each concept to learn more.
 
 #### General security terms
+
 It's good to differentiate
 {{< glossary-tooltip id="authentication" >}} and
 {{< glossary-tooltip id="authorization" >}}. The former concerns *who* can
@@ -213,6 +214,106 @@ In 2023,
 [you should *not* use the implicit flow](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#name-implicit-grant), as it is deprecated for the more
 secure authorization code flow with PKCE.
 
+### How does the PKCE flow solve problems with the implicit flow?
+
+Instead of a preconfigured, agreed-upon `client_secret`, during the
+PKCE, you'll make up a new secret on the fly every time you initiate
+a flow. Then, you'll hash it and make the exchange then.
+
+This protects the redirect step of the process. Here, the access token
+is returned in a response to a `POST` request at the token exchange
+endpoint. This is more secure than the implicit flow provides the token
+in the final callback URL. URLs can end up in logs, bookmarks, browser 
+session synchronizations, and more. They're easier to tamper with than
+network calls.
+
+## Visual representations of OAuth 
+
+### Authorization Code Flow 
+
+{{< mermaid class="bg-light text-center" >}}
+---
+title: Sequence Diagram For OAuth2.0 Authorization Code Flow
+---
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#C4D7A4',
+      'lineColor': '#A1A1A1',
+      'arrowheadColor': 'A1A1A1'
+    }
+  }
+}%%
+sequenceDiagram
+
+    participant user as User
+    participant fc   as Client Application (front channel)
+    participant bc   as Client Application (back channel)
+    participant auth as Authorization Server
+    participant res  as Resource Server
+
+    user->>fc:   Click OAuth sign-in button
+    fc->>auth:   Authorization code request, initiating the flow
+    auth->>user: HTTP 302 redirect to the provider's sign-in page
+    user->>auth: Authenticate with provider and give consent
+    auth->>fc:   Authorization code response
+    fc->>bc:     Request to sign in user with the code
+    bc->>auth:   Token exchange request with the code, client id & secret
+    auth->>auth: Validates code, client secret
+    auth->>bc:   Responds with tokens (access and refresh)
+    bc->>bc:     Stores tokens, creates user if needed 
+    bc->>fc:     Respond with HTTPOnly session cookie
+    user->>fc:   Hey, now do something on my behalf
+    fc->>bc:     Request
+    bc->>res:    Protected resource request with access token
+    res->>bc:    Response with user data
+    bc->>bc:     Compute
+    bc->>fc:     Response
+
+{{< /mermaid >}}
+
+### Authorization Code Flow with PKCE
+
+{{< mermaid class="bg-light text-center" >}}
+---
+title: Sequence Diagram For OAuth2.0 Authorization Code Flow With PKCE
+---
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#C4D7A4',
+      'lineColor': '#A1A1A1',
+      'arrowheadColor': 'A1A1A1'
+    }
+  }
+}%%
+sequenceDiagram
+
+    participant user as User
+    participant fc   as Client Application
+    participant auth as Authorization Server
+    participant res  as Resource Server
+
+    user->>fc:   Click OAuth sign-in button
+    fc->>fc:     Generate PKCE code challenge, verifier
+    fc->>auth:   Request with code challenge
+    auth->>user: HTTP 302 redirect to the provider's sign-in page
+    user->>auth: Authenticate with provider and give consent
+    auth->>fc:   Authorization code response
+    fc->>auth:   Request with code and verifier to token exchange endpoint
+    auth->>auth: Validates code, and PKCE
+    auth->>fc:   Responds with tokens (access and refresh)
+    fc->>fc:     Stores tokens locally
+    user->>fc:   Hey, now do something on my behalf
+    fc->>res:    Protected resource request with access token
+    res->>fc:    Response with user data
+    fc->>fc:     Compute
+    fc->>user:   Indicate what happened
+
+{{< /mermaid >}}
+
 ## How to implement OAuth into your application
 
 ### 1. Set up with your provider
@@ -223,7 +324,7 @@ differ.
 
 I'll continue with our Google example.
 
-### 2. Create a project
+### 2. Gather your credentials and settings
 
 These are the only steps that are very provider-dependent. For Google,
 you'll need to 
@@ -280,116 +381,4 @@ Security OAuth2. Here's a shortlist of client libraries:
 
 For more libraries, check out the 
 [official OAuth documentation page](https://oauth.net/code/).
-
-## Authorization Code Flow
-
-As the original and most widely used OAuth mechanism, the authorization code
-flow allows /swer 
-
-## A note about the deprecated Implicit Flow
-
-The implicit flow *only* uses a `client_id` without a `client_secret`. It
-bypasses the last half that appears in the authorization code flow. 
-
-### Inherently less secure
-
-This makes it inherently
-
-# Notes
-
-Cross origin resource sharing: 
-
-Oauth flow works by POST request over to the token endpoint with the
-authorization code that it has, it gets back an access token. If your OAuth2.0
-server is on a different domain than your app, that is a cross origin request.
-That can only happen if the OAuth2.0 server says its ok. Prior to the
-possiblity of CORS in modern browsers, there was no way to do the proper
-authorization code flow in browser.
-
-That's why the implicit flow came around. The implicit flow ONLY uses the
-client ID, no client secret. More importantly, it returns the access token in
-the redirect from the authorization server and bypasses the entire second step.
-
-More direct. Why do we have the extra step? The simpler route of returning the
-access token immediately in the redirect, there are a lot more ways for that to
-go wrong. That redirect step can fail. The token can be intercepted easily. In
-OAuth2, the access token can be used by anyone who has it.
-
-In the Authorization code flow, there's additional step where you get a limited
-authorization code, that you then have to POST the code to exchange it for an
-access token.
-
-How can you trust the network on the post request? No such thing as 100%
-secure. Everything is about mitigating risk.
-
-Cryptography is not perfectly secure. We use large enough numbers where it is
-practically impossible and we can limit the easier attacks. There are more ways
-to steal the token itself than intercepting the POST request.
-
-Broswer extensions that can see the address bar. Browsers are now more
-featureful. Intercepting the POST request is much more difficult.
-
-The implicit flow was how we did OAuth2 in the browser. Browsers can now modify
-the path URL in the address bar - session history management API.
-
-Landscape has evolved and that is the main motivator for this change. Implicit
-flow is a less than ideal solution.
-
-Mobile app landscape is evolving. Public clients - the secret is not guaranteed
-safe. PKCE (pixie) extension developed for doing OAuth in mobile. Instead of a
-preconfigured secret, it makes up a new secret on the fly every time. A dynamic
-secret. Make up a new secret, hash it, then does the OAuth flow with that
-additional hash value and gets the access token in the back channel. Securely
-do the authorization code flow without a secret to ensure that someone else
-    couldn't intercept the code. (extension to oAuth2)
-
-Created for mobile apps, but useful for any client. You can't store a secret,
-but you still want to use the best flow, the authorization code flow. Browsers
-can just use PKCE without change to the spec.
-
-The authorization code flow and PKCE is the best security.
-
-Is this something we should immediately go do? If y ou have apps with the
-implicit flow, there's no new risk - there's always a risky situation. As long
-as you are doing things properly, you're probably fine. But yes eventually you
-should.
-
-Use PKCE using forward.
-
-Does that mean that my browser is 100% secure? Unfortunately, there isn't a
-secure storage API in browsers. At the end of a flow, you have an access token.
-There's no good way to store that in the browser. Anywhere you put it, it's
-accessible to JavaScript on the page.
-
-PKCE only protects the redirect step.
-
-Until we have secure APIs in browsers to store secrets, this will always be the
-case.
-
-Serving from a dynamic web server: use the back channel for the API and do the
-OAuth2 flow on the server. The server does the authorization code flow. It
-exchanges the auth code for the access token. Keep it on the server, then just
-maintain a session on the browser. Session cookies are very secure - HTTPONLY
-and Secure. 
-
-Browsers are great because they're interactive and fast, but they are NOT
-secure and they're leaky. None of this is secure without HTTPS! Think of
-security holistically. Content security policies, HSTS, OWASP. resource for web
-app security
-
-If you're dealing with a pure JavaScript app with no server side component, and
-you're doing OAuth2.0 in the browser, you must read all those
-
-## Implicit flow
-
-## Authorization Code flow
-
-### Proof key for code exchange
-
-Additional security is provided by the proof key for code exchange (PKCE),
-which helps prevent cross
-
-## Authorization providers
-
-## Authorization as a service
 
