@@ -17,7 +17,14 @@ mermaid: true
 
 {{< alert icon="☀️" text="The main audience of this post is for anyone looking to gather data with an online form." />}}
 
-## TL;DR, which tool should I use?
+Forms are a great way to standardize how people deliver information to you. But which
+tool is right for what you're doing?
+
+In this article, I'll compare and contrast [Google Forms](https://forms.google.com)
+and [Asana Forms](https://asana.com/guide/help/premium/forms) to help you decide which
+to use for your next project.
+
+## TL;DR, which form tool should I use?
 
 Use this general-purpose flowchart to help you decide whether Google Forms or Asana Forms is
 right for your use case.
@@ -58,10 +65,9 @@ flowchart TD
 
 ## About Google Forms
 
-[Google Forms](https://forms.google.com) works with [Sheets](https://sheets.google.com) out of
-the box. Since you can have your responses end up in a spreadsheet, Google Forms a great tool
-for keeping *records* of information. Some classic use cases are collecting RSVPs, survey
-responses, and user feedback.
+Google Forms works with Google's spreadsheet tool, [Sheets](https://sheets.google.com) out
+of the box. This makes Google Forms a great tool for keeping *records* of information.
+Some classic use cases are collecting RSVPs, survey responses, and user feedback.
 
 ### When to use it
 
@@ -80,8 +86,8 @@ counterpart, with the ability to change fonts, backgrounds, and theme colors.
 
 ## About Asana Forms
 
-One of the best features of Asana [Forms](https://asana.com/guide/help/premium/forms) is that you
-can tie them to [Custom Fields](https://asana.com/guide/help/premium/custom-fields). These make it
+One of the best features of Asana Forms is that you can tie them to
+[Custom Fields](https://asana.com/guide/help/premium/custom-fields). These make it
 easy to link data across multiple projects and track data across the organization.
 
 Unlike Google Sheets, where you can convert responses into rows in a spreadhseet, Asana Form

@@ -89,18 +89,18 @@ This is great because:
 3. __Secure credential management:__ The service receives tokens directly from
    the authorization provider (Google, in our example).
 
-## What is OAuth, exactly?
+## So what is OAuth, exactly?
 
-As I touched on above, OAuth is a widely used *authorization* mechanism for
-delegated access.
+As I touched on above, OAuth is an *authorization* mechanism for delegated
+access.
 
 If you've ever used a "Sign in with Google", "Sign in with Microsoft", or
 "Sign in with -some service name-" button to log on to a service, then you've
-used OAuth! This allows you to grant that service access to parts of an account
+used OAuth! This allows you to grant one service access to parts of an account
 you hold with another service, all without signing up with a new password.
 
 A lot of "magic" happens behind the scenes in the most common
-{{< glossary-tooltip id=oauth-flow >}}s implemented in mobile and web apps.
+{{< glossary-tooltip id=oauth-flow >}} implemented in mobile and web apps.
 This is the *authorization code flow*, with its close relative the
 *authorization code flow with proof key for code exchange* (PKCE, pronounced
 'pixie' -- it's cute like that). While both flows achieve the same thing, and
@@ -108,8 +108,10 @@ one supersedes the other, it's worth knowing about both. I'll discuss the
 history and motivation behind each.
 
 While you can follow the OAuth specification and implement your own
-authorization and resource servers, this article will discuss the more common
-use case of implementing OAuth through an external authorization provider.
+authorization and resource servers, this article will discuss a common use
+case of implementing a OAuth client application with an external authorization
+provider.
+
 By the end of this article, you'll be ready to start implementing OAuth flows
 in your application!
 
