@@ -1,13 +1,13 @@
 ---
-title: "Should you use Google Forms or Asana Forms?"
+title: "Should You Use Google Forms Or Asana Forms?"
 description: "A guide to help you decide what form tool to use when gathering input."
 excerpt: ""
 date: 2023-06-23T15:31:50-06:00
 lastmod: 2023-06-23T15:31:50-06:00
 weight: 50
 images: [main.jpg]
-categories: []
-tags: []
+categories: ["Guides"]
+tags: ["Google", "Asana", "comparison", "form-tools"]
 contributors: ["Oliver Abdulrahim"]
 pinned: false
 homepage: false

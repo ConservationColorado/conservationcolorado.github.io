@@ -5,7 +5,7 @@ excerpt: ""
 date: 2023-06-21T10:31:20-06:00
 lastmod: 2023-06-21T10:31:20-06:00
 weight: 50
-images: ["oauth-intro.png"]
+images: ["main.jpg"]
 categories: ["OAuth2.0 Series"]
 tags: ["guide", "OAuth", "OAuth2.0", "OpenID Connect", "security", "authentication", "authorization", "authorization code flow", "authorization code flow with PKCE", "PKCE", "visualization", "software development"]
 contributors: ["Oliver Abdulrahim"]
@@ -21,7 +21,8 @@ mermaid: true
 
 In this article, I'll talk about OAuth2.0 as a way for users to authorize your
 application to access their data and act on their behalf. In more technical
-terms, you'll learn how to create an OAuth client application.
+terms, you'll learn how to create an OAuth
+{{< glossary-tooltip id=client-application >}}.
 
 ### What I'll save for later
 
@@ -31,7 +32,7 @@ authentication extension on top of OAuth. You can use OIDC along with OAuth
 application. This is a complex topic, so let's discuss it another time in more
 focus.
 
-### What I won't discuss
+### What I won't cover
 
 We'll only talk about OAuth2.0 which, as the name suggests, is the second
 revision of the OAuth specification. As OAuth1.0 is no longer used on the
@@ -49,7 +50,7 @@ is a good technology to familiarize yourself with because:
 4. You can access specific user data without asking for any account-wide
 credentials
 
-## What problems does OAuth solve?
+## What problem does OAuth solve?
 
 ### Sharing data before OAuth
 
@@ -317,7 +318,7 @@ sequenceDiagram
     user->>auth: Authenticate with provider and give consent
     auth->>fc:   Authorization code response
     fc->>auth:   Request with code and verifier to token exchange endpoint
-    auth->>auth: Validates code, and PKCE
+    auth->>auth: Validates code and PKCE
     auth->>fc:   Responds with tokens (access and refresh)
     fc->>fc:     Stores tokens locally
     user->>fc:   Hey, now do something on my behalf
