@@ -4,12 +4,10 @@ description: ""
 excerpt: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
-draft: true
 weight: 50
-images: []
+images: ["main.jpg"]
 categories: []
 tags: []
 contributors: []
-pinned: false
-homepage: false
+toc: true
 ---

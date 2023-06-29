@@ -6,7 +6,7 @@ date: 2023-06-15T12:53:00-06:00
 lastmod: 2023-06-15T12:53:00-06:00
 draft: false
 weight: 50
-images: ["passwords.png"]
+images: ["main.jpg"]
 categories: ["Security"]
 tags: ["passwords", "password-manager", "Bitwarden", "security", "best-practices", "secrets-management", "online-safety"]
 contributors: ["Oliver Abdulrahim"]
