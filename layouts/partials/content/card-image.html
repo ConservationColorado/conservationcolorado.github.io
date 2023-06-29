@@ -8,9 +8,6 @@
   {{ $image = resources.Get (printf "%s%s" "images/" site.Params.defaultImage) }}
 {{ end -}}
 
-{{ $webp := printf "%s%s" $fillImage " webp" }}
-{{ $image = $image.Resize $webp}}
-
 {{ $lqip := $image.Resize site.Params.lqipWidth -}}
 
 <img
