@@ -5,7 +5,7 @@ excerpt: ""
 date: 2023-06-26T22:17:37-06:00
 lastmod: 2023-06-26T22:17:37-06:00
 weight: 50
-images: []
+images: ["main.jpg"]
 categories: ["OAuth2.0 Series"]
 tags: ["guide", "test-driven-development", "TDD", "OAuth", "OAuth2.0", "OpenID Connect", "security", "authentication", "authorization", "authorization code flow", "authorization code flow with PKCE", "PKCE", "software development", "Spring Security", "Spring Boot", "Spring", "client-application"]
 contributors: ["Oliver Abdulrahim"]
