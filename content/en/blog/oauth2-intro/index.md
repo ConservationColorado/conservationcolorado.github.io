@@ -15,7 +15,7 @@ mermaid: true
 
 ## About this article
 
-{{< alert icon="☀️" text="The main audience of this post is developers and organization administrators." />}}
+{{< alert icon="☀️" text="The main audience of this post is developers." />}}
 
 ### What I'll discuss
 
@@ -44,11 +44,10 @@ If you're using modern APIs on behalf of users, you will likely need to
 implement OAuth to get started. Even if you aren't in this category, OAuth
 is a good technology to familiarize yourself with because:
 
-1. OAuth is very widely used
-2. OAuth provides a great user experience out of the box
-3. You don't have to store passwords (though you will still manage secrets)
-4. You can access specific user data without asking for any account-wide
-credentials
+1. OAuth is very widely used across the web
+2. OAuth can provide an intuitive and familiar user experience
+3. You can access specific user data without asking for any account-wide
+credentials or even for identity
 
 ## What problem does OAuth solve?
 
@@ -96,8 +95,9 @@ access.
 
 If you've ever used a "Sign in with Google", "Sign in with Microsoft", or
 "Sign in with -some service name-" button to log on to a service, then you've
-used OAuth! This allows you to grant one service access to parts of an account
-you hold with another service, all without signing up with a new password.
+used OAuth! Again, this allows you to grant one service access to parts of an
+account you hold with another service, all without signing up with a new
+password.
 
 A lot of "magic" happens behind the scenes in the most common
 {{< glossary-tooltip id=oauth-flow >}} implemented in mobile and web apps.
@@ -150,17 +150,17 @@ Your code fits into all of this as the
 {{< glossary-tooltip id="client-application" >}}. This is what the user
 consents to have do things on their behalf.
 
-#### OAuth flow final steps
+#### OAuth steps
+
+The {{< glossary-tooltip id="redirect-uri" >}} is where the authorization
+server sends the user back after the consent stage of the OAuth flow. In a
+full stack application, this is typically back to your front end.
 
 The final goal for your application at the end of the OAuth flow is to get
 hold of an {{< glossary-tooltip id="access-token" >}}. This is what you'll
-use to things on behalf of a user. In our example, Google would issue an
+use to do things on behalf of a user. In our example, Google would issue an
 access token limited to the specific permissions granted to your app. Bear
 in mind that this token is considered a secret!
-
-The {{< glossary-tooltip id="redirect-uri" >}} is where the authorization
-provider sends the user back upon successful completion of the OAuth flow.
-This is typically back to your application.
 
 ### Understanding OAuth's security trade-offs
 
@@ -170,8 +170,9 @@ factors: usability, cost, convenience, performance, flexiblity, risk,
 and so on.
 
 Even though you don't handle usernames and passwords within an OAuth flow,
-you're still handling secrets (tokens). You need to understand the risks
-that introduces before you can build a secure application.
+you're still handling secrets (tokens) and potentially user identities.
+You need to understand the risks that introduces before you can build a
+secure application.
 
 The authorization code flow is made to take advantage of the best parts
 of each element of a full stack application.
@@ -189,52 +190,78 @@ accessible to the browser's JavaScript engine.
 Since there's no secure API to to store secrets in a browser, the flow
 ends on a secure back channel. This is a dynamic web server that you
 create, with at least an authorization code exchange endpoint publicly
-available on the Internet. Your authorizaion provider calls this endpoint
+available on the Internet. The authorizaion server calls this endpoint
 to finish exchanging the authorization code for tokens.
 
 Then, your back end server stores, manages, and uses the tokens on behalf
-of your front channel. To keep your user's authorization, set a session
-cookie with the browser. These are very secure [with the `HttpOnly`
-and `Secure` flags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie).
+of your front channel. You need to ensure that this storage is secure,
+both in that who has access to that data and how that data is exposed.
 
-There are a few advantages here:
+To keep your users authorized for a period of time so they don't have to
+keep logging in, set a session cookie with the browser. These are very
+secure if you set the
+[`HttpOnly` and `Secure` cookie flags](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie).
+
+There are big advantages to taking this approach:
 
 1. Your users' access and refresh tokens never touch the browser
 environment
 2. Your business logic is nicely decoupled from your user interface
 3. Your front end code and state management is simplified
+4. Your users can come back to your app without having to log back in
+every visit.
 
 ### But what about the (deprecated) implicit flow?
 
-You may have heard about the implicit grant OAuth flow. This flow was
-introduced as a workaround with known security flaws (again, trade-offs!).
-At the time that OAuth was introduced, browsers were unable to make
-requests across domains (the authorization code flow requires a `POST`
-request to exchange a code for a token). In other words, cross-origin
-resource sharing (CORS) was not possible.
+You may have heard about the implicit grant within the context of OAuth.
+This was introduced as a workaround with known security flaws (again,
+trade-offs!). At the time that OAuth was ideated, browsers were unable
+to make requests across domains. In other words, cross-origin resource
+sharing (CORS) was not possible. The authorization code flow requires a
+`POST` request to exchange a code for a token, which meant that
+browsers couldn't use it. This is how the implicit flow came about. It
+essentially skipped the second half of the original flow.
 
-Applications that couldn't securely store a  `client_secret`, like
-single-page and mobile applications, also defaulted to the implicit flow.
+Single-page and mobile apps can't securely store a  `client_secret`, so
+these also historically defaulted to the implicit flow.
 
 In 2023,
-[you should *not* use the implicit flow](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#name-implicit-grant), as it is deprecated for the more
-secure authorization code flow with PKCE.
+[you should *not* use the implicit flow](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics#name-implicit-grant),
+in almost all cases, as it is deprecated for the more secure authorization
+code flow with PKCE.
+
+#### The one valid implicit flow use case
+
+Though this article doesn't cover OIDC, I wanted to mention that there
+is still one valid use case for the implicit flow as of my writing of
+this article in mid-2023.
+
+This applies to your application if you *only want to implement user
+sign-in and don't need an access token*.
+
+[The implicit flow with form post flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/implicit-flow-with-form-post)
+is a secure method for logging in users to your application without
+having to manage any user secrets. Taking this approach, you'll receive
+an `id_token`, not an access token or other credential. Please note that
+not all providers support this!
 
 ### How does the PKCE flow solve problems with the implicit flow?
 
 Instead of a preconfigured, agreed-upon `client_secret` like in
 the traditional authorzation code flow, during the PKCE flow, you'll
 make up a new secret on the fly each time a user initiates the process.
-Then, you'll hash it and begin the exchange.
+Then, you'll hash that secret and begin the exchange.
 
 When the flow completes, you'll receive the token in a response to the
 `POST` request you made at the token exchange endpoint. This better
-protects the redirect stage and makes the token much harder to swipe.
+protects the redirect stage as network calls have fewer avenues of
+attack than URLs, making the token much harder to swipe.
 
-In contrast, the implicit flow returns the token back as a URL parameter
-at the final callback location. URLs can end up in logs, bookmarks,
-browser session synchronizations, and more. They're also easier to
-tamper with than network calls over HTTPS.
+In contrast, the implicit flow returns the access token back as a URL
+parameter at the final callback location. This is problematic as URLs
+can end up in logs, bookmarks, browser session synchronizations, a
+malicious extension, and more. They're also easier to tamper with than
+network calls over HTTPS.
 
 ## Visual representations of OAuth
 
@@ -343,8 +370,8 @@ I'll continue with our Google example.
 
 ### 2. Gather your credentials and settings
 
-These are the only steps that are very provider-dependent. For Google,
-you'll need to
+These are the only steps that are provider-dependent. For Google, you'll
+need to
 [create a Google Cloud project on the web](https://support.google.com/cloud/answer/6158849?hl=en).
 
 Set up and register your client application and prepare your:
@@ -387,11 +414,17 @@ flowchart TD
     PKCE[Authorization Code Flow with PKCE]
 {{< /mermaid >}}
 
-### 4. Find a library for your language and framework
+Note that with [the advent of OAuth2.1](https://oauth.net/2.1/) in the
+near future, all applications using the authorization code flow will
+need to use PKCE!
 
-You should use a library to make an OAuth client application. Don't roll
-your own! For example, here at Conservation Colorado, we've used Spring
-Security OAuth2. Here's a shortlist of client libraries:
+### 4. Find a library for your language or framework
+
+You should use a library to make an OAuth client application. Please
+don't roll your own for a production app! For example, here at
+Conservation Colorado, we've used Spring Security OAuth2.
+
+Here's a shortlist of client libraries:
 
 | Language                           | Framework                                             | Dependency or library                                                                                                |
 |------------------------------------|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -400,7 +433,7 @@ Security OAuth2. Here's a shortlist of client libraries:
 | JavaScript, TypeScript             | [Express](https://expressjs.com/)                     | [Passport](https://www.passportjs.org/)                                                                              |
 | Go                                 | none required                                         | [Golang OAuth2](https://pkg.go.dev/golang.org/x/oauth2)                                                              |
 
-For more libraries, check out the
+For more choices, check out the
 [official OAuth documentation page](https://oauth.net/code/).
 
 ## Conclusion
@@ -408,8 +441,9 @@ For more libraries, check out the
 I hope this article has helped you learn a bit more about OAuth flows
 and how you start to can implement them into your application.
 
-This is a complex topic, so in a future article, I'll disscus more
-specific implementation details with code examples. I'll also talk about
-combining OAuth with OIDC!
+In a future article, I'll disscus more specific implementation details
+with code examples. I'll also talk about combining OAuth with OIDC!
+
+Thanks for reading!
 
 --- Oliver
