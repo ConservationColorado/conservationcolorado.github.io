@@ -8,7 +8,7 @@ draft: false
 weight: 100
 images: [ "bitwarden.png" ]
 categories: [ "Security" ]
-tags: [ "passwords", "password managers", "security", "Bitwarden", "LastPass", "Google Passwords" ]
+tags: [ "guide", "how-to", "moving-password-managers", "passwords", "password-managers", "password-manager-comparison", "security", "Bitwarden", "LastPass", "Google-Passwords", "it-management", "organizational-change", "LastPass-breach", "encryption" ]
 contributors: [ "Oliver Abdulrahim" ]
 toc: true
 mermaid: true
@@ -20,7 +20,7 @@ In this article, I'll talk retrospectively about our organization's recent migra
 including why we made the change and how we did it.
 
 We've decided to open source this information to fill in gaps we found in documentation online. Plus, we're a big fan of
-{{< glossary-tooltip term_id=password-manager >}} tools and want to make great security accessible!
+{{< glossary-tooltip id=password-manager >}} tools and want to make great security accessible!
 
 These steps apply to any other password manager your organization may want to use, whether you're switching providers
 like we did or starting to use a password manager for the first time.
@@ -35,8 +35,9 @@ learned about this in January 2023, we knew we needed to use a different tool to
 
 ## Quick background on how most password managers work
 
-Terms you need to know before we discuss what happened and how we’ll respond are: *vault*, *entry*, *encrypt/decrypt*,
-and *main password*. We’ll discuss each.
+Terms you need to know before we discuss what happened and how we responded are: {{< glossary-tooltip id=vault >}},
+{{< glossary-tooltip id=encryption >}}, and {{< glossary-tooltip id=main-password >}}. Hover over for definitions;
+we’ll also discuss each below.
 
 LastPass stores your data in a vault. This vault belongs only to you (ideally!). You can (also ideally!) only access
 this vault through LastPass, for example, using a LastPass browser extension, web app, or mobile app. LastPass also
