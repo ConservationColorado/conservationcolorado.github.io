@@ -12,6 +12,8 @@ contributors: ["Oliver Abdulrahim"]
 toc: true
 ---
 
+{{< alert icon="☀️" text="The main audience of this post is developers." />}}
+
 ## Background
 
 When I first implemented an OAuth2.0 {{< glossary-tooltip id=client-application >}}
