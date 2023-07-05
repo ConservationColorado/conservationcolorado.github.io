@@ -18,12 +18,13 @@ toc: true
 
 When I first implemented an OAuth2.0 {{< glossary-tooltip id=client-application >}}
 at our organization, configuring our reactive Spring application correctly and securely
-took lots of time to figure out! This is the guide I wish that I had when I was doing
-that work.
+took lots of time to figure out! This is the guide I wish existed doing that work.
 
-In this post, I'll take a test-driven approach to setting up a reactive OAuth2
-client. Much of the configuration is the same as classic Spring Web, but exact class
-names and testing differ slightly between the two frameworks.
+[In a previous article](/blog/getting-started-with-implementing-oauth2.0/), I discussed
+OAuth in terms of the framework itself. In this post, I'll take a test-driven approach
+to implementing a reactive Spring OAuth2 client in code. If you're using classic Spring
+Web, much of the configuration is the same; exact class names and testing differ slightly
+between the two frameworks.
 
 If you prefer to jump straight in, I've included two GitHub repositories
 to help you get started: one written in Kotlin, and the other in Java. Both use
@@ -55,7 +56,7 @@ IntelliJ's Spring project creator, include these:
 #### Acquire a `client_id` and `client_secret`
 
 I've discussed this in a
-[previous article](http://localhost:1313/blog/getting-started-with-implementing-oauth2.0/#how-to-implement-oauth-into-your-application),
+[previous article](/blog/getting-started-with-implementing-oauth2.0/#how-to-implement-oauth-into-your-application),
 but you'll want to register your application with an OAuth2.0 / OIDC 1.0
 provider like Google, GitHub, Okta, or Microsoft.
 
@@ -404,7 +405,7 @@ internal fun securityWebFilterChain(http: ServerHttpSecurity) =
 You'll also want to add some configuration on authentication failure,
 perhaps sending the user-agent back to a helpful error page.
 
-### Add a basic CORS configuration
+### CORS configuration
 
 If your front end application needs to log in or log out users
 (you'd do this via a `POST` request to your Spring server), you'll
