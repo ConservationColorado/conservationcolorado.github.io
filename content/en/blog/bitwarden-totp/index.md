@@ -130,7 +130,7 @@ provider's end, or from the application storing it, like your unlocked authentic
 
 ### Video Demo
 
-{{< video ratio="1x1" attributes="controls muted" webm-src="videos/tutorial.webm" mp4-src="videos/tutorial.mp4" >}}
+<video width="100%" controls muted><source src="/videos/tutorial.webm" type="video/webm"><source src="/videos/tutorial.mp4" type="video/mp4"></video>
 
 ### Steps
 
